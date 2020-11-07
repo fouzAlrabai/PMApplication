@@ -13,16 +13,27 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Register extends AppCompatActivity{
     EditText mUsername, mEmail, mPassword;
     Button register;
-//    FirebaseAuth mAuth;
-//    FirebaseFirestore db;
+   FirebaseAuth mAuth;
+   FirebaseFirestore db;
     String username,email;
     String userId;
+    public static final String TAG = "Register";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +42,7 @@ public class Register extends AppCompatActivity{
         mEmail = findViewById(R.id.username);
         mPassword = findViewById(R.id.password);
         register = findViewById(R.id.login);
-//        mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,87 +69,70 @@ public class Register extends AppCompatActivity{
                     return;
                 }
                 //register user
-//                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()) {
-//                            // تشيك للايميل اذا صدقي او لا
-//                            FirebaseUser fuser = mAuth.getCurrentUser();
-//                            fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                @Override
-//                                public void onSuccess(Void aVoid) {
-//                                    Toast.makeText(RegisterAsDonator.this, "Verification Email Has Been Sent ", Toast.LENGTH_SHORT).show();
-//                                }
-//                            }).addOnFailureListener(new OnFailureListener() {
-//                                @Override
-//                                public void onFailure(@NonNull Exception e) {
-//                                    Log.d(TAG,"OnFailure: Email Not Sent");
-//                                }
-//                            });
+               mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // تشيك للايميل اذا صدقي او لا
+                            FirebaseUser fuser = mAuth.getCurrentUser();
+                           fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(Register.this, "Verification Email Has Been Sent ", Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.d(TAG,"OnFailure: Email Not Sent");
+                                }
+                            });
 //// NEED TO WAIT FOR Abby
-//                            userId = mAuth.getCurrentUser().getUid();
-//                            //  Toast.makeText(RegisterAsDonator.this, "Registration Was Successful!!", Toast.LENGTH_SHORT).show();
-//
-//                            // Donator don = new Donator(username,email,gender.getText().toString());
-//                            db= FirebaseFirestore.getInstance();
-//                            final DocumentReference documentReference=db.collection("Donators").document(userId);
+                            userId = mAuth.getCurrentUser().getUid();
+                             Toast.makeText(Register.this, "Registration Was Successful!!", Toast.LENGTH_SHORT).show();
+
+                            // Donator don = new Donator(username,email,gender.getText().toString());
+                            db= FirebaseFirestore.getInstance();
+                            final DocumentReference documentReference=db.collection("Users").document(userId);
 //
 //
 //                            String token_id= FirebaseInstanceId.getInstance().getToken();
-//                            Map<String,Object> donators = new HashMap<>();
-//                            donators.put("UserName",username);
-//                            donators.put("Email",email);
+                           Map<String,Object> users = new HashMap<>();
+                            users.put("UserName",username);
+                            users.put("Email",email);
 //                            donators.put("Gender",gen);
 //                            donators.put("PhoneNumber","05xxxxxxxx");
 //                            donators.put("token_id", token_id);
-//                            documentReference.set(donators).addOnSuccessListener(new OnSuccessListener<Void>() {
-//
-//                                @Override
-//                                public void onSuccess(Void aVoid) {
-//                                    // Log.d(TAG,"OnSuccess: user profile is created for"+userId);
-//                                }
-//                            }).addOnFailureListener(new OnFailureListener() {
-//                                @Override
-//                                public void onFailure(@NonNull Exception e) {
-//                                    //  Log.d(TAG,"OnFailure "+ e.toString());
-//                                }
-//                            });
-//
-//
-//                            DocumentReference documentReference1=db.collection("users").document(userId);
-//                            Map<String,Object> user = new HashMap<>();
-//                            user.put("Type","Donator");
-//                            user.put("email",email);
-//                            user.put("token_id", token_id);
-//                            documentReference1.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-//
-//                                @Override
-//                                public void onSuccess(Void aVoid) {
-//                                    //    Log.d(TAG,"OnSuccess: user profile is created for"+userId);
-//                                }
-//                            }).addOnFailureListener(new OnFailureListener() {
-//                                @Override
-//                                public void onFailure(@NonNull Exception e) {
-//                                    // Log.d(TAG,"OnFailure "+ e.toString());
-//                                }
-//                            });
-//
-//
-//
-//                            //db.collection("users").document(userid).set(don);
-//
-//                           /* db = FirebaseFirestore.getInstance();
-//                            String  USER = mAuth.getCurrentUser().getUid();
-//                            Donator donator = new Donator(username,email,(String)gender.getText());
-//                            db.collection("users").document(USER).set(donator);*/
-//
-//
-//                            startActivity(new Intent(RegisterAsDonator.this, DonatorProfile.class));
-//                        } else {
-//                            Toast.makeText(RegisterAsDonator.this, "Something Went Wrong,Try Again !  " , Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                });
+                          documentReference.set(users).addOnSuccessListener(new OnSuccessListener<Void>() {
+
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                     Log.d(TAG,"OnSuccess: user profile is created for"+userId);
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                     Log.d(TAG,"OnFailure "+ e.toString());
+                                }
+                            });
+
+
+
+
+
+                            //db.collection("users").document(userid).set(don);
+
+                           /* db = FirebaseFirestore.getInstance();
+                            String  USER = mAuth.getCurrentUser().getUid();
+                            Donator donator = new Donator(username,email,(String)gender.getText());
+                            db.collection("users").document(USER).set(donator);*/
+
+
+                            startActivity(new Intent(Register.this, HomePage.class));
+                        } else {
+                            Toast.makeText(Register.this, "Something Went Wrong,Try Again !  " , Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
     }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "602205703376",
+    "firebase_url": "https://pmapplication-45ae8.firebaseio.com",
+    "project_id": "pmapplication-45ae8",
+    "storage_bucket": "pmapplication-45ae8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602205703376:android:3275dcd03428c38defa2d5",
+        "android_client_info": {
+          "package_name": "com.example.pmapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "602205703376-6b1d4rusa6r065daol97dboir5ill91v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuqEamzvC6K-bMGTufNIFfOXxrrFpOvP0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "602205703376-6b1d4rusa6r065daol97dboir5ill91v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
