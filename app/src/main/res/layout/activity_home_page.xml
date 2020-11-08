@@ -60,4 +60,13 @@
         app:srcCompat="@android:drawable/ic_lock_power_off"
         app:tint="#FAFAFA" />
 
+    <ListView
+        android:layout_width="459dp"
+        android:layout_height="684dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.582" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
