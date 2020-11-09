@@ -88,7 +88,7 @@
         android:layout_marginBottom="64dp"
         android:background="#009688"
         android:enabled="true"
-        android:text="@string/action_sign_in"
+        android:text="@string/action_sign_up"
         android:textSize="18sp"
         app:backgroundTint="#107C61"
         app:layout_constraintBottom_toBottomOf="parent"
