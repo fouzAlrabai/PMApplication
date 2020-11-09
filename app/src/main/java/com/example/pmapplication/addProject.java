@@ -41,7 +41,7 @@ public class addProject extends AppCompatActivity {
     TextView dateOfPickUp,dateOfPickUp2;
     Calendar calendar;
     int day,month,year;
-    String Name,budget,startTime,finishTime,userId;
+    String Name,budget,startTime,finishTime,managerId;
     final SimpleDateFormat curFormater = new SimpleDateFormat("dd/mm/yyyy");
     Date CurrentDateObj = new Date();
     ProgressBar progressBar;
@@ -148,15 +148,14 @@ public class addProject extends AppCompatActivity {
                         progressBar.setVisibility(View.VISIBLE);
                         addProject.setVisibility(View.GONE);
                         mAuth = FirebaseAuth.getInstance();
-                        userId = mAuth.getCurrentUser().getUid();
+                        managerId = mAuth.getCurrentUser().getUid();
                         db = FirebaseFirestore.getInstance();
-                        DocumentReference VolRef=db.collection("Projects").document(userId);
                         Map<String,Object> Project = new HashMap<>();
                         Project.put("ProjectName",Name);
                         Project.put("StartDate",startTime);
                         Project.put("FinishDate",finishTime);
                         Project.put("Budget",budget);
-
+                        Project.put("managerID",managerId);
                         db.collection("Projects").add(Project).addOnSuccessListener(new OnSuccessListener<DocumentReference>(){
 
                             @Override
