@@ -22,4 +22,8 @@ public class HomePage extends AppCompatActivity {
         Toast.makeText(HomePage.this, "Logged out Successfully", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(HomePage.this,  Login.class));
     }
+
+    public void OpenAddProject(View view) {
+        startActivity(new Intent(HomePage.this,  addProject.class));
+    }
 }

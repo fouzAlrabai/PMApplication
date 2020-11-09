@@ -45,6 +45,7 @@
         app:tint="#FAFAFA"
         app:useCompatPadding="false"
         tools:visibility="visible"
+        android:onClick="OpenAddProject"
        />
 
     <ListView

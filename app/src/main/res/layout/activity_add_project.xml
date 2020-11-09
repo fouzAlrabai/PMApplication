@@ -35,106 +35,146 @@
     </Toolbar>
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="686dp"
+        android:layout_width="390dp"
+        android:layout_height="555dp"
         android:background="@drawable/singleproject"
         android:orientation="vertical"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.02"
-        android:padding="10dp">
+        app:layout_constraintVertical_bias="0.205">
 
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Project name:"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:padding="10dp"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="Enter Project Name"
-                android:inputType="text"
-                android:layout_margin="5dp"
-                android:padding="5dp"/>
-
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Start date:"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:padding="10dp"/>
-
-            <EditText
-                android:id="@+id/startDate"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="Enter Start date"
-                android:inputType="date"
-                android:layout_margin="5dp"
-                android:padding="5dp"
-                />
-
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Finish date:"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:padding="10dp"/>
-
-            <EditText
-                android:id="@+id/endDate"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="Enter Finish date"
-                android:inputType="date"
-                android:layout_margin="5dp"
-                android:padding="5dp"
-                />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Budget:"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:padding="10dp"/>
-
-            <EditText
-                android:id="@+id/budget"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="Enter budget"
-                android:inputType="numberDecimal"
-                android:layout_margin="5dp"
-                android:padding="5dp"
-                />
-
-        <Button
-            android:id="@+id/button2"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Project Name:"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/projectName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:hint="Enter Project Name"
+            android:inputType="text"
+            android:padding="5dp"
+            android:background="@drawable/edit_text_border"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Start DNate:"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content">
+
+            <TextView
+                android:id="@+id/startDate"
+                android:layout_width="334dp"
+                android:layout_height="50dp"
+                android:background="@drawable/edit_text_border"
+                android:hint="Enter Start Date"
+                android:textColorHint="#9E9E9E"
+                android:textColor="#212121"
+                android:textSize="19dp" />
+
+            <EditText
+                android:id="@+id/errorStartDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_border"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="Finish Date:"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content">
+
+            <TextView
+                android:id="@+id/endDate"
+                android:layout_width="334dp"
+                android:layout_height="50dp"
+                android:background="@drawable/edit_text_border"
+                android:hint="Enter Start Date"
+                android:textColorHint="#9E9E9E"
+                android:textColor="#212121"
+                android:textSize="19dp"/>
+
+            <EditText
+                android:id="@+id/errorEndDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_border"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:padding="10dp"-->
+<!--            android:text="Finish Date:"-->
+<!--            android:textSize="18dp"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/endDate"-->
+<!--            android:layout_width="328dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_margin="5dp"-->
+<!--            android:hint="Enter Finish Date"-->
+<!--            android:inputType="date"-->
+<!--            android:padding="5dp"-->
+<!--            />-->
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Budget:"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/budget"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:hint="Enter budget on SR"
+            android:inputType="numberDecimal"
+            android:padding="5dp"
+            android:background="@drawable/edit_text_border"/>
+
+        <Button
+            android:id="@+id/addProject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
             android:background="#009688"
             android:enabled="true"
             android:text="CREATE"
             android:textSize="18sp"
             app:backgroundTint="#107C61"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"/>
+            />
 
 
     </LinearLayout>
