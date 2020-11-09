@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import android.widget.ProgressBar;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -26,6 +26,7 @@ public class Login extends AppCompatActivity{
     FirebaseAuth fAuth;
     FirebaseFirestore db;
     String userId;
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +36,7 @@ public class Login extends AppCompatActivity{
         fAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         loginbtn = findViewById(R.id.login);
-
+        progressBar=findViewById(R.id.progressBar2);
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +61,8 @@ public class Login extends AppCompatActivity{
                     return;
                 }
                 else if(!(TextUtils.isEmpty(email) && TextUtils.isEmpty(password))) {
-
+                    progressBar.setVisibility(View.VISIBLE);
+                    loginbtn.setVisibility(View.GONE);
                     // authenticate the user
                     fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -68,32 +70,11 @@ public class Login extends AppCompatActivity{
 
                             if(task.isSuccessful()){
                                 Toast.makeText(Login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-
-
-                              //  String token_id= FirebaseInstanceId.getInstance().getToken();
-//                                String current_id=fAuth.getCurrentUser().getUid();
-//
-//                                Map<String,Object> tokenMap=new HashMap<>();
-//                                tokenMap.put("token_id", token_id);
-//                                db.collection("users").document(current_id).update(tokenMap).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                    @Override
-//                                    public void onSuccess(Void aVoid) {
-//
-//                                    }
-//                                });
-
-
-                                //to open the right profile
-
-
-
                                 startActivity(new Intent(Login.this,  HomePage.class));
                             }else {
-
-
-
                                 Toast.makeText(Login.this, "Something Went Wrong,Try Again ! " , Toast.LENGTH_SHORT).show();
-
+                                progressBar.setVisibility(View.GONE);
+                                loginbtn.setVisibility(View.VISIBLE);
                             }
 
                         }

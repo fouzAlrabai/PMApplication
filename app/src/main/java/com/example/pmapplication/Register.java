@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
+import android.widget.ProgressBar;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -29,10 +29,11 @@ import java.util.Map;
 public class Register extends AppCompatActivity{
     EditText mUsername, mEmail, mPassword;
     Button register;
-   FirebaseAuth mAuth;
-   FirebaseFirestore db;
+    FirebaseAuth mAuth;
+    FirebaseFirestore db;
     String username,email;
     String userId;
+    ProgressBar progressBar;
     public static final String TAG = "Register";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class Register extends AppCompatActivity{
         mPassword = findViewById(R.id.password);
         register = findViewById(R.id.login);
         mAuth = FirebaseAuth.getInstance();
-
+        progressBar=findViewById(R.id.loading);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,12 +69,13 @@ public class Register extends AppCompatActivity{
                     mPassword.setError("The Characters Must Be At Least 8 Characters ");
                     return;
                 }
+                progressBar.setVisibility(View.VISIBLE);
+                register.setVisibility(View.GONE);
                 //register user
                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // تشيك للايميل اذا صدقي او لا
                             FirebaseUser fuser = mAuth.getCurrentUser();
                            fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
@@ -86,23 +88,15 @@ public class Register extends AppCompatActivity{
                                     Log.d(TAG,"OnFailure: Email Not Sent");
                                 }
                             });
-//// NEED TO WAIT FOR Abby
                             userId = mAuth.getCurrentUser().getUid();
                              Toast.makeText(Register.this, "Registration Was Successful!!", Toast.LENGTH_SHORT).show();
-
-                            // Donator don = new Donator(username,email,gender.getText().toString());
                             db= FirebaseFirestore.getInstance();
                             final DocumentReference documentReference=db.collection("Users").document(userId);
-//
-//
-//                            String token_id= FirebaseInstanceId.getInstance().getToken();
-                           Map<String,Object> users = new HashMap<>();
+
+                            Map<String,Object> users = new HashMap<>();
                             users.put("UserName",username);
                             users.put("Email",email);
-//                            donators.put("Gender",gen);
-//                            donators.put("PhoneNumber","05xxxxxxxx");
-//                            donators.put("token_id", token_id);
-                          documentReference.set(users).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            documentReference.set(users).addOnSuccessListener(new OnSuccessListener<Void>() {
 
                                 @Override
                                 public void onSuccess(Void aVoid) {
@@ -115,21 +109,11 @@ public class Register extends AppCompatActivity{
                                 }
                             });
 
-
-
-
-
-                            //db.collection("users").document(userid).set(don);
-
-                           /* db = FirebaseFirestore.getInstance();
-                            String  USER = mAuth.getCurrentUser().getUid();
-                            Donator donator = new Donator(username,email,(String)gender.getText());
-                            db.collection("users").document(USER).set(donator);*/
-
-
                             startActivity(new Intent(Register.this, HomePage.class));
                         } else {
                             Toast.makeText(Register.this, "Something Went Wrong,Try Again !  " , Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
+                            register.setVisibility(View.VISIBLE);
                         }
                     }
                 });

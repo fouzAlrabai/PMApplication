@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EdgeEffect;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.app.DatePickerDialog;
 import java.text.ParseException;
@@ -43,6 +44,7 @@ public class addProject extends AppCompatActivity {
     String Name,budget,startTime,finishTime,userId;
     final SimpleDateFormat curFormater = new SimpleDateFormat("dd/mm/yyyy");
     Date CurrentDateObj = new Date();
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +56,7 @@ public class addProject extends AppCompatActivity {
         addProject=findViewById(R.id.addProject);
         errorStartDate=findViewById(R.id.errorStartDate);
         errorEndtDate=findViewById(R.id.errorEndDate);
+        progressBar=findViewById(R.id.progressBar);
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH) + 1;
@@ -142,6 +145,8 @@ public class addProject extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     if(isValidStartTime && isValidFinishTime){
+                        progressBar.setVisibility(View.VISIBLE);
+                        addProject.setVisibility(View.GONE);
                         mAuth = FirebaseAuth.getInstance();
                         userId = mAuth.getCurrentUser().getUid();
                         db = FirebaseFirestore.getInstance();
@@ -163,7 +168,8 @@ public class addProject extends AppCompatActivity {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 Toast.makeText(addProject.this, "Something Went Wrong,Try Again ! " , Toast.LENGTH_SHORT).show();
-                                // Log.w(TAG, "Error adding document", e);
+                                progressBar.setVisibility(View.GONE);
+                                addProject.setVisibility(View.VISIBLE);
                             }
                         });
                     }
@@ -175,5 +181,5 @@ public class addProject extends AppCompatActivity {
     public void backToHomePage(View view) {
         startActivity(new Intent(addProject.this,HomePage.class));
     }
-    
+
 }
