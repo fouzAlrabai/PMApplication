@@ -34,7 +34,7 @@ import java.util.Arrays;
 public class HomePage extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseFirestore db;
-    String managerID, reqID;
+    String managerID;
     Project project;
     ListView listView;
     ArrayList<Project> projects;

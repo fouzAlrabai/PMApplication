@@ -42,8 +42,6 @@ public class addProject extends AppCompatActivity {
     Calendar calendar;
     int day,month,year;
     String Name,budget,startTime,finishTime,managerId;
-    final SimpleDateFormat curFormater = new SimpleDateFormat("dd/mm/yyyy");
-    Date CurrentDateObj = new Date();
     ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

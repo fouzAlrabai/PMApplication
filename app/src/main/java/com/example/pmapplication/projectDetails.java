@@ -73,4 +73,16 @@ public class projectDetails extends AppCompatActivity {
         startActivity(new Intent(projectDetails.this,HomePage.class));
 
     }
+
+    public void OpenViewResourcePage(View view) {
+        intent1 = getIntent().getExtras();
+        if (intent1 != null) {
+            final String ProjectID = (String) intent1.getString("ProjectID");
+            Intent intent = new Intent(projectDetails.this, ViewResources.class);
+            Bundle b =new Bundle();
+            b.putString("ProjectID",ProjectID);
+            intent.putExtras(b);
+            startActivity(intent);
+        }
+    }
 }

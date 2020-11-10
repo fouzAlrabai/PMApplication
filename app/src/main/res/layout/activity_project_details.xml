@@ -209,7 +209,8 @@
             android:text="Resources:"
             android:textStyle="bold"
             android:textColor="#616161"
-            android:textSize="19dp"/>
+            android:textSize="19dp"
+            android:onClick="OpenViewResourcePage"/>
     </LinearLayout>
 
     <LinearLayout

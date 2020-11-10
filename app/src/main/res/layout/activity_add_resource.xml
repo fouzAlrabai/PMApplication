@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".addProject">
+    tools:context=".AddResource">
 
     <Toolbar
         android:id="@+id/toolbar"
@@ -13,25 +13,21 @@
         android:background="#107C61"
         tools:ignore="MissingConstraints"
         android:gravity="center">
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/abc_vector_test"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="16dp"
-                android:onClick="backToHomePage"/>
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/abc_vector_test"
+            android:onClick="backToViewResource"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="ADD PROJECT"
+            android:layout_marginTop="10dp"
+            android:text="Add Resource"
             android:textColor="#FAFAFA"
             android:textSize="20dp"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="132dp"
-            tools:layout_editor_absoluteY="16dp" />
+            android:textStyle="bold" />
     </Toolbar>
 
     <LinearLayout
@@ -46,17 +42,66 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintVertical_bias="0.205">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Type Of Resource:"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+        <RadioGroup
+            android:id="@+id/radioType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="#3f4658"
+                android:checked="true"
+                android:text="People"
+                android:textColor="#3f4658"
+                android:textColorLink="#000000"
+                android:textSize="18sp"
+                android:padding="5dp"/>
+
+            <RadioButton
+                android:id="@+id/materials"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="#3f4658"
+                android:text="Materials"
+                android:textColor="#3f4658"
+                android:textColorLink="#000000"
+                android:textSize="18sp"
+                android:padding="5dp"/>
+
+            <RadioButton
+                android:id="@+id/equipment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="#3f4658"
+                android:text="Equipment"
+                android:textColor="#3f4658"
+                android:textColorLink="#000000"
+                android:textSize="18sp"
+                android:padding="5dp"/>
+
+        </RadioGroup>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Project Name:"
+            android:text="Resource Name:"
             android:textSize="18dp"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/projectName"
+            android:id="@+id/ResourceName"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="5dp"
@@ -65,94 +110,50 @@
             android:padding="5dp"
             android:background="@drawable/edit_text_border"/>
 
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Start Date:"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content">
-
-            <TextView
-                android:id="@+id/startDate"
-                android:layout_width="334dp"
-                android:layout_height="50dp"
-                android:background="@drawable/edit_text_border"
-                android:hint="Enter Start Date"
-                android:textColorHint="#9E9E9E"
-                android:textColor="#212121"
-                android:textSize="19dp" />
-
-            <EditText
-                android:id="@+id/errorStartDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit_text_border"
-                android:layout_marginTop="5dp"/>
-        </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="Finish Date:"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content">
-
-            <TextView
-                android:id="@+id/endDate"
-                android:layout_width="334dp"
-                android:layout_height="50dp"
-                android:background="@drawable/edit_text_border"
-                android:hint="Enter Start Date"
-                android:textColorHint="#9E9E9E"
-                android:textColor="#212121"
-                android:textSize="19dp"/>
-
-            <EditText
-                android:id="@+id/errorEndDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit_text_border"
-                android:layout_marginTop="5dp"/>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="Budget:"
+            android:text="Time Per Day:"
             android:textSize="18dp"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/budget"
+            android:id="@+id/TimePerDay"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="5dp"
-            android:hint="Enter budget in SR"
-            android:inputType="numberDecimal"
+            android:hint="Enter Time Per Day of Resource"
+            android:inputType="time"
             android:padding="5dp"
             android:background="@drawable/edit_text_border"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Cost:"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/Cost"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:hint="Enter Cost of Resource"
+            android:inputType="numberDecimal"
+            android:padding="5dp"
+            android:background="@drawable/edit_text_border"/>
         <Button
-            android:id="@+id/addProject"
+            android:id="@+id/addResource"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:background="#009688"
             android:enabled="true"
-            android:text="CREATE"
+            android:text="Add"
             android:textSize="18sp"
             app:backgroundTint="#107C61"
             android:visibility="visible"
@@ -166,7 +167,6 @@
             android:visibility="gone"/>
 
 
+
     </LinearLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
