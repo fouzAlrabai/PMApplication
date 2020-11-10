@@ -48,15 +48,6 @@
         android:onClick="OpenAddProject"
        />
 
-    <ListView
-        android:layout_width="459dp"
-        android:layout_height="684dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.582"
-        />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -71,5 +62,16 @@
         app:layout_constraintVertical_bias="0.533"
         app:srcCompat="@android:drawable/ic_lock_power_off"
         app:tint="#FAFAFA" />
+
+    <ListView
+        android:id="@+id/projectList"
+        android:layout_width="402dp"
+        android:layout_height="667dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
