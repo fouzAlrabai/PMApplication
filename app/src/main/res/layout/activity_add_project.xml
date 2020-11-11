@@ -35,7 +35,7 @@
     </Toolbar>
 
     <LinearLayout
-        android:layout_width="390dp"
+        android:layout_width="380dp"
         android:layout_height="555dp"
         android:background="@drawable/singleproject"
         android:orientation="vertical"

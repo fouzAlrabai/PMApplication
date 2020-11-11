@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="#107C61"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        tools:targetApi="lollipop">
 
         <TextView
             android:layout_width="wrap_content"
@@ -194,65 +195,40 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
         android:gravity="center">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="Resources:"
-            android:textSize="18dp"
-            android:textColor="#9E9E9E"/>
+
 
         <TextView
             android:id="@+id/Resources"
-            android:layout_width="230dp"
-            android:layout_height="wrap_content"
+            android:layout_width="180dp"
+            android:layout_height="70dp"
+            android:textAlignment="center"
             android:onClick="OpenViewResourcePage"
             android:padding="10dp"
-            android:text="Resources:"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/singleproject"
+            android:text="Resources"
             android:textColor="#616161"
             android:textSize="19dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="30dp"
+            tools:ignore="RtlCompat" />
 
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="105dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="?attr/homeAsUpIndicator"
-            android:layoutDirection="rtl"
-            android:onClick="OpenViewResourcePage"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
-        app:layout_constraintVertical_bias="0.093">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="180dp"
+            android:layout_height="70dp"
+            android:textAlignment="center"
+            android:background="@drawable/singleproject"
             android:padding="10dp"
-            android:text="Tasks:"
-            android:textSize="18dp"
-            android:textColor="#9E9E9E"/>
 
-        <TextView
-            android:id="@+id/Tasks"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="Tasks:"
+            android:text="Tasks"
+            android:textSize="19dp"
             android:textStyle="bold"
             android:textColor="#616161"
-            android:textSize="19dp"/>
-    </LinearLayout>
+            tools:ignore="RtlCompat" />
 
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
