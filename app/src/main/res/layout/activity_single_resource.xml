@@ -5,22 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".singleResource">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="129dp"
+        android:layout_height="100dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/singleproject"
-        android:orientation="vertical"
         android:gravity="left"
+        android:orientation="vertical"
+        android:padding="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="3dp"
-        android:padding="15dp">
+        tools:layout_editor_absoluteX="-9dp">
 
         <LinearLayout
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
@@ -28,38 +29,41 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:text="Resource Type:"
-                android:textSize="18dp"
-                android:textColor="#9E9E9E"/>
+                android:textColor="#9E9E9E"
+                android:textSize="18dp" />
+
             <TextView
                 android:id="@+id/ResourceType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"
                 android:padding="10dp"
+                android:text="TextView"
                 android:textColor="#616161"
                 android:textSize="19dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:text="Resource Name:"
-                android:textSize="18dp"
-                android:textColor="#9E9E9E"/>
+                android:textColor="#9E9E9E"
+                android:textSize="18dp" />
+
             <TextView
                 android:id="@+id/ResourceName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"
                 android:padding="10dp"
+                android:text="TextView"
                 android:textColor="#616161"
                 android:textSize="19dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>

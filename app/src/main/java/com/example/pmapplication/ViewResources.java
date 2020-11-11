@@ -3,8 +3,10 @@ package com.example.pmapplication;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.EventListener;
@@ -62,22 +65,18 @@ public class ViewResources extends AppCompatActivity {
                                 Resources.add(resource);
                                 MyResourcesAdapter myResourcesAdapter = new MyResourcesAdapter(ViewResources.this, R.layout.activity_single_resource, Resources);
                                 listView.setAdapter(myResourcesAdapter);
-//                                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                                    @Override
-//                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-////                                        Project temp = (Project) parent.getItemAtPosition(position);
-//////                                    Intent in = getIntent();
-//////                                    in.putExtra("ProjectID", temp.getID());
-//////                                    in.putExtra("Where","Projects");
-////                                        Intent intent = new Intent(HomePage.this, projectDetails.class);
-//////                                    intent.putExtra("ProjectID", in.getStringExtra("ProjectID"));
-//////                                    intent.putExtra("Where", in.getStringExtra("Where"));
-////                                        Bundle b =new Bundle();
-////                                        b.putString("ProjectID",temp.getID());
-////                                        intent.putExtras(b);
-////                                        startActivity(intent);
-//                                    }
-//                                });
+                                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                        Resource temp = (Resource) parent.getItemAtPosition(position);
+                                        Intent intent = new Intent(ViewResources.this, resourceDetails.class);
+                                        Bundle b =new Bundle();
+                                        b.putString("ResourceID",temp.getID());
+                                        b.putString("ProjectID",temp.getProjectID());
+                                        intent.putExtras(b);
+                                        startActivity(intent);
+                                    }
+                                });
                             }
 
                         }// end if null

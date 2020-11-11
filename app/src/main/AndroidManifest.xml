@@ -10,7 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PMApplication"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AddResource"></activity>
+        <activity
+            android:name=".resourceDetails"
+            android:theme="@style/Theme.PMApplication.customWindowPop">
+
+        </activity>
+        <activity android:name=".AddResource" />
         <activity android:name=".ViewResources" />
         <activity android:name=".singleResource" />
         <activity android:name=".projectDetails" />

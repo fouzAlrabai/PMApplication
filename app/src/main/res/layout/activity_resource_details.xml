@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".projectDetails">
+    android:layout_height="wrap_content"
+    tools:context=".resourceDetails"
+    android:background="@drawable/background">
 
     <Toolbar
         android:id="@+id/toolbar"
@@ -18,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:text="PROJECT DETAILS"
+            android:text="RESOURCE DETAILS"
             android:textColor="#FAFAFA"
             android:textSize="20dp"
             android:textStyle="bold" />
@@ -26,10 +27,10 @@
             android:id="@+id/imageView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/abc_vector_test"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="16dp"
-            android:onClick="backToHomePage"/>
+            android:onClick="backToViewResourcePage"/>
     </Toolbar>
 
 
@@ -48,16 +49,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Project Name:"
+            android:text="Resource Type:"
             android:textSize="18dp"
             android:textColor="#9E9E9E"/>
 
         <TextView
-            android:id="@+id/ProjectName"
+            android:id="@+id/ResourceType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Project Name:"
+            android:text="Resource Type:"
             android:textColor="#616161"
             android:textSize="19dp"
             android:textStyle="bold"/>
@@ -78,16 +79,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Start Date:"
+            android:text="Resource Name:"
             android:textSize="18dp"
             android:textColor="#9E9E9E"/>
 
         <TextView
-            android:id="@+id/StartDate"
+            android:id="@+id/ResourceName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Start Date:"
+            android:text="Resource Name:"
             android:textColor="#616161"
             android:textSize="19dp"
             android:textStyle="bold"/>
@@ -108,16 +109,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Finish Date:"
+            android:text="Time Per Day:"
             android:textSize="18dp"
             android:textColor="#9E9E9E"/>
 
         <TextView
-            android:id="@+id/FinishDate"
+            android:id="@+id/TimePerDay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Finish Date:"
+            android:text="Time Per Day:"
             android:textColor="#616161"
             android:textSize="19dp"
             android:textStyle="bold"/>
@@ -137,121 +138,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Budget:"
+            android:text="Cost:"
             android:textSize="18dp"
             android:textColor="#9E9E9E"/>
 
         <TextView
-            android:id="@+id/Budget"
+            android:id="@+id/Cost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Budget:"
+            android:text="Cost:"
             android:textColor="#616161"
             android:textSize="19dp"
             android:textStyle="bold"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="Total Cost:"
-            android:textSize="18dp"
-            android:textColor="#9E9E9E"/>
-
-        <TextView
-            android:id="@+id/TotalCost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="Total Cost:"
-            android:textColor="#616161"
-            android:textSize="19dp"
-            android:textStyle="bold"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="Resources:"
-            android:textSize="18dp"
-            android:textColor="#9E9E9E"/>
-
-        <TextView
-            android:id="@+id/Resources"
-            android:layout_width="230dp"
-            android:layout_height="wrap_content"
-            android:onClick="OpenViewResourcePage"
-            android:padding="10dp"
-            android:text="Resources:"
-            android:textColor="#616161"
-            android:textSize="19dp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="105dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="?attr/homeAsUpIndicator"
-            android:layoutDirection="rtl"
-            android:onClick="OpenViewResourcePage"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
-        app:layout_constraintVertical_bias="0.093">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="Tasks:"
-            android:textSize="18dp"
-            android:textColor="#9E9E9E"/>
-
-        <TextView
-            android:id="@+id/Tasks"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="Tasks:"
-            android:textStyle="bold"
-            android:textColor="#616161"
-            android:textSize="19dp"/>
     </LinearLayout>
 
 
