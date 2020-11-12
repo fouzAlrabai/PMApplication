@@ -120,8 +120,17 @@ public class AddResource extends AppCompatActivity {
                                                 documentRef.update("TotalCost", TotalCost).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
                                                     public void onSuccess(Void aVoid) {
-                                                        Toast.makeText(AddResource.this, "Project Added Successfully", Toast.LENGTH_SHORT).show();
-                                                        startActivity(new Intent(AddResource.this, ViewResources.class));
+                                                        Toast.makeText(AddResource.this, "Resource Added Successfully", Toast.LENGTH_SHORT).show();
+                                                        intent1 = getIntent().getExtras();
+                                                        if (intent1 != null) {
+                                                            final String ProjectID = (String) intent1.getString("ProjectID");
+                                                            Intent intent = new Intent(AddResource.this, ViewResources.class);
+                                                            Bundle b =new Bundle();
+                                                            b.putString("ProjectID",ProjectID);
+                                                            intent.putExtras(b);
+                                                            startActivity(intent);
+                                                        }
+//                                                        startActivity(new Intent(AddResource.this, ViewResources.class));
                                                     }
                                                 });
                                             } else {

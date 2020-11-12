@@ -1,5 +1,6 @@
 package com.example.pmapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,7 +10,11 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -38,7 +43,7 @@ public class resourceDetails extends AppCompatActivity {
         params.x=0;
         params.y=-40;
         getWindow().setAttributes(params);
-        getWindow().setLayout((int)(width*.8),(int)(height*.5));
+        getWindow().setLayout((int)(width*.8),(int)(height*.6));
         getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.background));
         Type=findViewById(R.id.ResourceType);
         Name=findViewById(R.id.ResourceName);
@@ -71,11 +76,71 @@ public class resourceDetails extends AppCompatActivity {
         intent1 = getIntent().getExtras();
         if (intent1 != null) {
             final String ProjectID = (String) intent1.getString("ProjectID");
+            final String ResourceID = (String) intent1.getString("ResourceID");
             Intent intent = new Intent(resourceDetails.this, ViewResources.class);
             Bundle b =new Bundle();
             b.putString("ProjectID",ProjectID);
+            b.putString("ResourceID",ResourceID);
             intent.putExtras(b);
             startActivity(intent);
+        }
+    }
+
+    public void OpenPupUp(View view) {
+        intent1 = getIntent().getExtras();
+        if (intent1 != null) {
+            final String ProjectID = (String) intent1.getString("ProjectID");
+            final String ResourceID = (String) intent1.getString("ResourceID");
+            Intent intent = new Intent(resourceDetails.this, WarningPupUp.class);
+            Bundle b = new Bundle();
+            b.putString("ProjectID",ProjectID);
+            b.putString("ResourceID",ResourceID);
+            intent.putExtras(b);
+            startActivity(intent);
+
+//            DocumentReference documentReference = db.collection("Resources").document(ResourceID);
+//            documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+//                @Override
+//                public void onEvent(@Nullable final DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+//                    String recourceCost = documentSnapshot.getString("Cost");
+//                    Double recCost=Double.parseDouble(recourceCost);
+//
+//                    DocumentReference docRef = db.collection("Projects").document(ProjectID);
+//                    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                            if (task.isSuccessful()) {
+//                                DocumentSnapshot document = task.getResult();
+//                                if (document != null && document.exists()) {
+//                                    String ProjectCost=document.getString("TotalCost");
+//                                    Double TotalCost=Double.parseDouble(ProjectCost);
+//                                    Double NewTotalCost=TotalCost-recCost;
+//                                    String Total=NewTotalCost+"";
+//                                    DocumentReference documentRef = db.collection("Projects").document(ProjectID);
+//                                    documentRef.update("TotalCost", Total).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                        @Override
+//                                        public void onSuccess(Void aVoid) {
+////                                            DocumentReference Ref = db.collection("Resources").document(ResourceID);
+//                                            db.collection("Resources").document(ResourceID).delete();
+////                                            startActivity(intent);
+////                                            Ref.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+////                                                @Override
+////                                                public void onSuccess(Void aVoid) {
+//////                                                    startActivity(intent);
+////                                                }
+////                                            });
+//                                        }
+//                                    });
+//                                } else {
+//
+//                                }
+//                            } else {
+//
+//                            }
+//                        }
+//                    });
+//                }
+//            });//
         }
     }
 }

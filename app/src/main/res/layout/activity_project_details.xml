@@ -212,7 +212,8 @@
             android:textStyle="bold"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="30dp"
-            tools:ignore="RtlCompat" />
+            tools:ignore="RtlCompat"
+            android:gravity="center"/>
 
 
         <TextView
@@ -221,7 +222,7 @@
             android:textAlignment="center"
             android:background="@drawable/singleproject"
             android:padding="10dp"
-
+            android:gravity="center"
             android:text="Tasks"
             android:textSize="19dp"
             android:textStyle="bold"
