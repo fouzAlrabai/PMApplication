@@ -76,7 +76,7 @@ public class AddResource extends AppCompatActivity {
                     return;
                 }
                 else if (TextUtils.isEmpty(timePerDay)){
-                    TimePerDay.setError("Please Enter Time Per Day OF Resource, It Is Required");
+                    TimePerDay.setError("Please Enter Time Per Day of Resource, It Is Required");
                     return;
                 }
                 else if(TextUtils.isEmpty(cost)){

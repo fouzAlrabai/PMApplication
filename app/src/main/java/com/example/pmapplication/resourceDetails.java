@@ -97,50 +97,6 @@ public class resourceDetails extends AppCompatActivity {
             b.putString("ResourceID",ResourceID);
             intent.putExtras(b);
             startActivity(intent);
-
-//            DocumentReference documentReference = db.collection("Resources").document(ResourceID);
-//            documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-//                @Override
-//                public void onEvent(@Nullable final DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-//                    String recourceCost = documentSnapshot.getString("Cost");
-//                    Double recCost=Double.parseDouble(recourceCost);
-//
-//                    DocumentReference docRef = db.collection("Projects").document(ProjectID);
-//                    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                            if (task.isSuccessful()) {
-//                                DocumentSnapshot document = task.getResult();
-//                                if (document != null && document.exists()) {
-//                                    String ProjectCost=document.getString("TotalCost");
-//                                    Double TotalCost=Double.parseDouble(ProjectCost);
-//                                    Double NewTotalCost=TotalCost-recCost;
-//                                    String Total=NewTotalCost+"";
-//                                    DocumentReference documentRef = db.collection("Projects").document(ProjectID);
-//                                    documentRef.update("TotalCost", Total).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                        @Override
-//                                        public void onSuccess(Void aVoid) {
-////                                            DocumentReference Ref = db.collection("Resources").document(ResourceID);
-//                                            db.collection("Resources").document(ResourceID).delete();
-////                                            startActivity(intent);
-////                                            Ref.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-////                                                @Override
-////                                                public void onSuccess(Void aVoid) {
-//////                                                    startActivity(intent);
-////                                                }
-////                                            });
-//                                        }
-//                                    });
-//                                } else {
-//
-//                                }
-//                            } else {
-//
-//                            }
-//                        }
-//                    });
-//                }
-//            });//
         }
     }
 }

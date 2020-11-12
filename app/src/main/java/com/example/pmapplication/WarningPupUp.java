@@ -32,6 +32,7 @@ public class WarningPupUp extends Activity {
     Button yes,no;
     Bundle intent1;
     FirebaseFirestore db;
+    String cost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,117 +71,7 @@ public class WarningPupUp extends Activity {
                 }
             }
         });
-        // if user pressed yes
 
-//        yes.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (intent1 != null) {
-//                    final String ProjectID = (String) intent1.getString("ProjectID");
-//                    final String ResourceID = (String) intent1.getString("ResourceID");
-//                    Intent intent = new Intent(WarningPupUp.this, resourceDetails.class);
-//                    Bundle b =new Bundle();
-//                    b.putString("ProjectID",ProjectID);
-//                    b.putString("ResourceID",ResourceID);
-//                    intent.putExtras(b);
-////                    startActivity(intent);
-//
-////                    DocumentReference documentReference =db.collection("Resources").document(ResourceID);
-////                    documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-////                        @Override
-////                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-////                            if (task.isSuccessful()) {
-////                                DocumentSnapshot documentSnapshot = task.getResult();
-////                                if (documentSnapshot.exists()) {
-////                                    String recourceCost = documentSnapshot.getString("Cost");
-////                                    Double recCost=Double.parseDouble(recourceCost);
-////                                    DocumentReference docRef = db.collection("Projects").document(ProjectID);
-////                                    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-////                                        @Override
-////                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-////                                            if (task.isSuccessful()) {
-////                                                DocumentSnapshot document = task.getResult();
-////                                                if (document != null && document.exists()) {
-////                                                    String ProjectCost=document.getString("TotalCost");
-////                                                    Double TotalCost=Double.parseDouble(ProjectCost);
-////                                                    Double NewTotalCost=TotalCost-recCost;
-////                                                    String Total=NewTotalCost+"";
-////                                                    DocumentReference documentRef = db.collection("Projects").document(ProjectID);
-////                                                    documentRef.update("TotalCost", Total).addOnSuccessListener(new OnSuccessListener<Void>() {
-////                                                        @Override
-////                                                        public void onSuccess(Void aVoid) {
-//////                                            DocumentReference Ref = db.collection("Resources").document(ResourceID);
-////                                                            db.collection("Resources").document(ResourceID).delete();
-//////                                            startActivity(intent);
-//////                                            Ref.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-//////                                                @Override
-//////                                                public void onSuccess(Void aVoid) {
-////////                                                    startActivity(intent);
-//////                                                }
-//////                                            });
-////                                                        }
-////                                                    });
-////                                                } else {
-////
-////                                                }
-////                                            } else {
-////
-////                                            }
-////                                        }
-////                                    });
-////
-////                                }
-////                            }
-////                        }
-////                    });
-//
-////
-////                                DocumentReference documentReference = db.collection("Resources").document(ResourceID);
-////            documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-////                @Override
-////                public void onEvent(@Nullable final DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-////                    String recourceCost = documentSnapshot.getString("Cost");
-////                    Double recCost=Double.parseDouble(recourceCost);
-////
-////                    DocumentReference docRef = db.collection("Projects").document(ProjectID);
-////                    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-////                        @Override
-////                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-////                            if (task.isSuccessful()) {
-////                                DocumentSnapshot document = task.getResult();
-////                                if (document != null && document.exists()) {
-////                                    String ProjectCost=document.getString("TotalCost");
-////                                    Double TotalCost=Double.parseDouble(ProjectCost);
-////                                    Double NewTotalCost=TotalCost-recCost;
-////                                    String Total=NewTotalCost+"";
-////                                    DocumentReference documentRef = db.collection("Projects").document(ProjectID);
-////                                    documentRef.update("TotalCost", Total).addOnSuccessListener(new OnSuccessListener<Void>() {
-////                                        @Override
-////                                        public void onSuccess(Void aVoid) {
-//////                                            DocumentReference Ref = db.collection("Resources").document(ResourceID);
-////                                            db.collection("Resources").document(ResourceID).delete();
-//////                                            startActivity(intent);
-//////                                            Ref.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-//////                                                @Override
-//////                                                public void onSuccess(Void aVoid) {
-////////                                                    startActivity(intent);
-//////                                                }
-//////                                            });
-////                                        }
-////                                    });
-////                                } else {
-////
-////                                }
-////                            } else {
-////
-////                            }
-////                        }
-////                    });
-////                }
-////            });//
-//                }
-//            }
-//        });
     }
 
     public void deleteResource(View view) {
@@ -194,73 +85,11 @@ public class WarningPupUp extends Activity {
             b.putString("ProjectID",ProjectID);
             b.putString("ResourceID",ResourceID);
             intent.putExtras(b);
-//            Toast.makeText(WarningPupUp.this, "ProjectID: "+ProjectID+" ResourceID: "+ResourceID, Toast.LENGTH_SHORT).show();
-//            startActivity(intent);
-
-//            DocumentReference documentReference = db.collection("Resources").document(ResourceID);
-//            documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-//                @Override
-//                public void onEvent(@Nullable final DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-//                    String recourceCost = documentSnapshot.getString("Cost");
-//                    Double recCost=Double.parseDouble(recourceCost);
-//
-//                    DocumentReference docRef = db.collection("Projects").document(ProjectID);
-//                    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                            if (task.isSuccessful()) {
-//                                DocumentSnapshot document = task.getResult();
-//                                if (document != null && document.exists()) {
-//                                    String ProjectCost=document.getString("TotalCost");
-//                                    Double TotalCost=Double.parseDouble(ProjectCost);
-//                                    Double NewTotalCost=TotalCost-recCost;
-//                                    String Total=NewTotalCost+"";
-//                                    DocumentReference documentRef = db.collection("Projects").document(ProjectID);
-//                                    documentRef.update("TotalCost", Total).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                        @Override
-//                                        public void onSuccess(Void aVoid) {
-////                                            DocumentReference Ref = db.collection("Resources").document(ResourceID);
-////                                            Toast.makeText(WarningPupUp.this, Ref.toString(), Toast.LENGTH_SHORT).show();
-//                                            db.collection("Resources").document(ResourceID).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                                @Override
-//                                                public void onSuccess(Void aVoid) {
-//                                                    Toast.makeText(WarningPupUp.this, "The Resource Deleted Successfully", Toast.LENGTH_SHORT).show();
-////                                                    startActivity(intent);
-//                                                }
-//                                            }).addOnFailureListener(new OnFailureListener() {
-//                                                @Override
-//                                                public void onFailure(@NonNull Exception e) {
-//                                                    Toast.makeText(WarningPupUp.this, e.getMessage() , Toast.LENGTH_SHORT).show();
-//                                                }
-//                                            });
-////                                            Ref.delete();
-//////                                            startActivity(intent);
-//////                                            Ref.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-//////                                                @Override
-//////                                                public void onSuccess(Void aVoid) {
-////////                                                    startActivity(intent);
-//////                                                }
-//////                                            });
-//
-//
-//
-//                                        }
-//                                    });
-//                                } else {
-//
-//                                }
-//                            } else {
-//
-//                            }
-//                        }
-//                    });
-//                }
-//            });//
             DocumentReference documentReference = db.collection("Resources").document(ResourceID);
             documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
                 @Override
                 public void onEvent(@Nullable final DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                    final String cost = documentSnapshot.getString("Cost");
+                     String cost = documentSnapshot.getString("Cost");
                     db.collection("Resources").document(ResourceID).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
@@ -273,20 +102,30 @@ public class WarningPupUp extends Activity {
                                         DocumentSnapshot document = task.getResult();
                                         if (document.exists()) {
                                             String ProjectTotalCost= document.getString("TotalCost");
-                                            Double TotalCost=Double.parseDouble(ProjectTotalCost);
-                                            Double ResCost=Double.parseDouble(cost);
-                                            Double ResSubPro=TotalCost-ResCost;
-                                            String c=ResSubPro+" ";
-                                            Toast.makeText(WarningPupUp.this, c, Toast.LENGTH_SHORT).show();
-                                            startActivity(intent);
-//                                            docRef.update("TotalCost", TotalCost+"").addOnSuccessListener(new OnSuccessListener<Void>(){
-//
-//                                                @Override
-//                                                public void onSuccess(Void aVoid) {
-//                                                    Toast.makeText(WarningPupUp.this, "The Resource Deleted Successfully", Toast.LENGTH_SHORT).show();
-//                                                    startActivity(intent);
-//                                                }
-//                                            });
+                                           Double TotalCost=Double.parseDouble(ProjectTotalCost);
+                                            if(cost!=null ){
+                                                Double ResCost=Double.parseDouble(cost);
+                                                if(TotalCost>ResCost){
+                                                    Double NewTotalCost=TotalCost-ResCost;
+                                                    docRef.update("TotalCost", NewTotalCost+"").addOnSuccessListener(new OnSuccessListener<Void>(){
+
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            Toast.makeText(WarningPupUp.this, "The Resource Deleted Successfully", Toast.LENGTH_SHORT).show();
+                                                            startActivity(intent);
+                                                        }
+                                                    });
+                                                }else {
+                                                    docRef.update("TotalCost", "0.0").addOnSuccessListener(new OnSuccessListener<Void>(){
+
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            Toast.makeText(WarningPupUp.this, "The Resource Deleted Successfully", Toast.LENGTH_SHORT).show();
+                                                            startActivity(intent);
+                                                        }
+                                                    });
+                                                }
+                                            }
                                         } else {
                                         }
                                     } else {
