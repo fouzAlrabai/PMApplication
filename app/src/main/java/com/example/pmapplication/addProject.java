@@ -154,6 +154,7 @@ public class addProject extends AppCompatActivity {
                         Project.put("FinishDate",finishTime);
                         Project.put("Budget",budget);
                         Project.put("managerID",managerId);
+                        Project.put("TotalCost","0");
                         db.collection("Projects").add(Project).addOnSuccessListener(new OnSuccessListener<DocumentReference>(){
 
                             @Override

@@ -66,7 +66,8 @@ android:background="@drawable/backgroundpop">
             android:background="@drawable/deletebutton"
             android:text="yes"
             android:textColor="#ffff"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:onClick="deleteResource"/>
 
         <Button
             android:id="@+id/no"
