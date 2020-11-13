@@ -28,7 +28,8 @@
             android:layout_marginTop="10dp"
             android:text="Add Task"
             android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="#FAFAFA" />
     </Toolbar>
 
     <LinearLayout
@@ -53,7 +54,7 @@
 
         <EditText
             android:id="@+id/TaskId"
-            android:layout_width="120dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="5dp"
             android:hint="Enter Task ID"
@@ -72,7 +73,7 @@
 
         <EditText
             android:id="@+id/TaskName"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="5dp"
             android:hint="Enter Task Name"
@@ -93,11 +94,11 @@
 
         <LinearLayout
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content">
+            android:layout_width="match_parent">
 
             <TextView
                 android:id="@+id/startDateT"
-                android:layout_width="300dp"
+                android:layout_width="334dp"
                 android:layout_height="50dp"
                 android:background="@drawable/edit_text_border"
                 android:hint="Enter Start Date"
@@ -123,11 +124,11 @@
 
         <LinearLayout
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content">
+            android:layout_width="match_parent">
 
             <TextView
                 android:id="@+id/endDateT"
-                android:layout_width="300dp"
+                android:layout_width="334dp"
                 android:layout_height="50dp"
                 android:background="@drawable/edit_text_border"
                 android:hint="Enter Start Date"
@@ -159,7 +160,7 @@
 
         <EditText
             android:id="@+id/Cost"
-            android:layout_width="310dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="5dp"
             android:hint="هنا بيكون لست يختار منها"

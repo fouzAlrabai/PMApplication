@@ -43,7 +43,7 @@ public class task_details extends AppCompatActivity {
         params.x=0;
         params.y=-40;
         getWindow().setAttributes(params);
-        getWindow().setLayout((int)(width*.8),(int)(height*.6));
+        getWindow().setLayout((int)(width*.8),(int)(height*.7));
         getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.background));
         taskID=findViewById(R.id.taskId);
         taskName=findViewById(R.id.taskName);
@@ -55,7 +55,6 @@ public class task_details extends AppCompatActivity {
 
         if (intent1 != null) {
             final String TaskID = (String) intent1.getString("TaskID");
-            Toast.makeText(task_details.this, TaskID , Toast.LENGTH_SHORT).show();
             DocumentReference documentReference = db.collection("Task").document(TaskID);
             documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
                 @Override
@@ -93,7 +92,7 @@ public class task_details extends AppCompatActivity {
         if (intent1 != null) {
             final String ProjectID = (String) intent1.getString("ProjectID");
             final String ResourceID = (String) intent1.getString("TaskID");
-            Intent intent = new Intent(task_details.this, WarningPupUp.class);
+            Intent intent = new Intent(task_details.this, WarningPupUpOfTask.class);
             Bundle b = new Bundle();
             b.putString("ProjectID",ProjectID);
             b.putString("TaskID",ResourceID);

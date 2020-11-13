@@ -12,9 +12,9 @@ import android.app.Activity;
 
         import androidx.annotation.NonNull;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+        import com.google.android.gms.tasks.OnCompleteListener;
+        import com.google.android.gms.tasks.OnFailureListener;
+        import com.google.android.gms.tasks.OnSuccessListener;
         import com.google.android.gms.tasks.Task;
         import com.google.firebase.firestore.DocumentReference;
         import com.google.firebase.firestore.DocumentSnapshot;
@@ -32,7 +32,6 @@ public class WarningPupUp extends Activity {
     Button yes,no;
     Bundle intent1;
     FirebaseFirestore db;
-    String cost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

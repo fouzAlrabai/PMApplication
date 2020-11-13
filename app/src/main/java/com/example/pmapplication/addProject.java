@@ -125,7 +125,7 @@ public class addProject extends AppCompatActivity {
                         Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(currentDate);
                         Date date2=new SimpleDateFormat("dd/MM/yyyy").parse(startTime);
                         if(date1.compareTo(date2) > 0) {
-                            errorStartDate.setError("Please Enter a valid date, not past");
+                            errorStartDate.setError("Please Enter a Valid Date, Not Past");
                             isValidStartTime=false;
                         }
                     } catch (ParseException e) {
@@ -136,7 +136,7 @@ public class addProject extends AppCompatActivity {
                         Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(startTime);
                         Date date2=new SimpleDateFormat("dd/MM/yyyy").parse(finishTime);
                         if(date1.compareTo(date2) > 0 || date1.compareTo(date2) == 0) {
-                            errorEndtDate.setError("Please Enter a valid date, not before or equal Start Date");
+                            errorEndtDate.setError("Please Enter a Valid Date, Not before or Equal Start Date");
                             isValidFinishTime=false;
                         }
                     } catch (ParseException e) {
