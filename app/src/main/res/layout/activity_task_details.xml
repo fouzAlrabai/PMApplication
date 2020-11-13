@@ -118,7 +118,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Time Per Day:"
+            android:text="Start Date:"
             android:textColor="#616161"
             android:textSize="19dp"
             android:textStyle="bold"/>
@@ -144,7 +144,7 @@
 
 
         <TextView
-            android:id="@+id/Cost"
+            android:id="@+id/finishDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
@@ -174,7 +174,7 @@
 
 
         <TextView
-            android:id="@+id/endDate"
+            android:id="@+id/member"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"

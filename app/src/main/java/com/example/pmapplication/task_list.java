@@ -160,7 +160,7 @@ import java.util.ArrayList;
 
       //**************Task class
          class Task {
-            String ID ,ProjectID,TaskName,TaskID,StartDate,FinishDate;
+            String ID ,ProjectID,TaskName,TaskID,StartDate,FinishDate,taskID;
 
             public Task(String ID, String projectID,String taskName ,String taskID,String startDate, String finishDate) {
                 this.ID=ID;

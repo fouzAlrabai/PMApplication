@@ -52,19 +52,20 @@ public class task_details extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         intent1 = getIntent().getExtras();
+
         if (intent1 != null) {
             final String TaskID = (String) intent1.getString("TaskID");
+            Toast.makeText(task_details.this, TaskID , Toast.LENGTH_SHORT).show();
             DocumentReference documentReference = db.collection("Task").document(TaskID);
             documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
                 @Override
                 public void onEvent(@Nullable final DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                    String cost = documentSnapshot.getString("Cost");
-                    String taskname = documentSnapshot.getString("TaskName");
                     String taskid= documentSnapshot.getString("TaskID");
+                    String taskname = documentSnapshot.getString("TaskName");
                     String startdate=documentSnapshot.getString("StartDate");
                     String finishdate=documentSnapshot.getString("FinishDate");
-                    taskName.setText(taskname);
                     taskID.setText(taskid);
+                    taskName.setText(taskname);
                     startDate.setText(startdate);
                     finishDate.setText(finishdate);
                 }

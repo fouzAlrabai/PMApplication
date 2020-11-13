@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PMApplication"
         android:usesCleartextTraffic="true">
-        <activity android:name=".task_details"></activity>
+        <activity android:name=".task_details"
+            android:theme="@style/Theme.PMApplication.customWindowPop"></activity>
         <activity android:name=".task_list" />
         <activity
             android:name=".WarningPupUp"

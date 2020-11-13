@@ -109,7 +109,7 @@ public class activity_add_task extends AppCompatActivity {
 
 
                 if(TextUtils.isEmpty(TaskNameS)){
-                    TaskName.setError("Please Enter Project Name, It Is Required");
+                    TaskName.setError("Please Enter Task Name, It Is Required");
                     return;
                 }
                 if(TextUtils.isEmpty(TaskIDS)){
