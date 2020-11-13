@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".projectDetails">
+    android:layout_height="wrap_content"
+    tools:context=".task_details"
+    android:background="@drawable/background">
 
     <Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="#107C61"
-        tools:ignore="MissingConstraints"
-        tools:targetApi="lollipop">
+        tools:ignore="MissingConstraints">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:text="PROJECT DETAILS"
+            android:text="TASK DETAILS"
             android:textColor="#FAFAFA"
             android:textSize="20dp"
             android:textStyle="bold" />
@@ -27,10 +27,10 @@
             android:id="@+id/imageView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/abc_vector_test"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="16dp"
-            android:onClick="backToHomePage"/>
+            android:onClick="backToViewResourcePage"/>
     </Toolbar>
 
 
@@ -49,16 +49,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Project Name:"
+            android:text="Task ID:"
             android:textSize="18dp"
             android:textColor="#9E9E9E"/>
 
         <TextView
-            android:id="@+id/ProjectName"
+            android:id="@+id/taskId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Project Name:"
+            android:text="Task ID:"
             android:textColor="#616161"
             android:textSize="19dp"
             android:textStyle="bold"/>
@@ -79,16 +79,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Start Date:"
+            android:text=" Task Name:"
             android:textSize="18dp"
             android:textColor="#9E9E9E"/>
 
         <TextView
-            android:id="@+id/StartDate"
+            android:id="@+id/taskName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Start Date:"
+            android:text="Task Name:"
             android:textColor="#616161"
             android:textSize="19dp"
             android:textStyle="bold"/>
@@ -109,16 +109,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Finish Date:"
+            android:text="Start Date"
             android:textSize="18dp"
             android:textColor="#9E9E9E"/>
 
         <TextView
-            android:id="@+id/FinishDate"
+            android:id="@+id/startDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Finish Date:"
+            android:text="Time Per Day:"
             android:textColor="#616161"
             android:textSize="19dp"
             android:textStyle="bold"/>
@@ -138,16 +138,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Budget:"
+            android:text="End Date :"
             android:textSize="18dp"
             android:textColor="#9E9E9E"/>
 
+
         <TextView
-            android:id="@+id/Budget"
+            android:id="@+id/Cost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Budget:"
+            android:text="End Date:"
             android:textColor="#616161"
             android:textSize="19dp"
             android:textStyle="bold"/>
@@ -160,7 +161,6 @@
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
@@ -168,69 +168,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Total Cost:"
+            android:text="member :"
             android:textSize="18dp"
             android:textColor="#9E9E9E"/>
 
+
         <TextView
-            android:id="@+id/TotalCost"
+            android:id="@+id/endDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Total Cost:"
+            android:text="members:"
             android:textColor="#616161"
             android:textSize="19dp"
             android:textStyle="bold"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout6"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/yes"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/deletebutton"
+        android:text="Delete Task"
+        android:textColor="#ffff"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
-        android:gravity="center">
+        app:layout_constraintVertical_bias="1.0"
+        android:onClick="OpenPupUp"/>
 
-
-
-        <TextView
-            android:id="@+id/Resources"
-            android:layout_width="170dp"
-            android:layout_height="70dp"
-            android:textAlignment="center"
-            android:onClick="OpenViewResourcePage"
-            android:padding="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/singleproject"
-            android:text="Resources"
-            android:textColor="#616161"
-            android:textSize="19dp"
-            android:textStyle="bold"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="30dp"
-            tools:ignore="RtlCompat"
-            android:gravity="center"/>
-
-
-        <TextView
-            android:layout_width="170dp"
-            android:layout_height="70dp"
-            android:textAlignment="center"
-            android:onClick="OpenTaskList"
-            android:background="@drawable/singleproject"
-            android:padding="10dp"
-            android:gravity="center"
-            android:text="Tasks"
-            android:textSize="19dp"
-            android:textStyle="bold"
-            android:textColor="#616161"
-            tools:ignore="RtlCompat" />
-
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

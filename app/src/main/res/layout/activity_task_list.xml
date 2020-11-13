@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".task_list">
+
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#107C61"
+        tools:ignore="MissingConstraints"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/imageView4"
+            android:onClick="backToProjectDetailsPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/abc_vector_test"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Tasks"
+            android:textColor="#FAFAFA"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </Toolbar>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/plusTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:visibility="visible"
+        app:fabCustomSize="60dp"
+        app:fabSize="auto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.932"
+        app:maxImageSize="50dp"
+        android:onClick="openAddTask"
+        app:srcCompat="@android:drawable/ic_input_add"
+        app:tint="#FAFAFA"
+        app:useCompatPadding="false"
+        tools:visibility="visible"
+        />
+
+    <ListView
+        android:id="@+id/TaskList"
+        android:layout_width="403dp"
+        android:layout_height="666dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <!--    android:onClick="OpenAddProject"-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

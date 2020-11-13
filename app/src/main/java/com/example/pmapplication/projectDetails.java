@@ -84,5 +84,20 @@ public class projectDetails extends AppCompatActivity {
             intent.putExtras(b);
             startActivity(intent);
         }
+
+
+
     }
-}
+
+    public void OpenTaskList(View view) {
+        intent1 = getIntent().getExtras();
+        if (intent1 != null) {
+            final String ProjectID = (String) intent1.getString("ProjectID");
+            Intent intent = new Intent(projectDetails.this, task_list.class);
+            Bundle b =new Bundle();
+            b.putString("ProjectID",ProjectID);
+            intent.putExtras(b);
+            startActivity(intent);
+        }
+}}
+
