@@ -33,7 +33,6 @@
             android:onClick="backToHomePage"/>
     </Toolbar>
 
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -232,5 +231,4 @@
 
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

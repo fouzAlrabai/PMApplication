@@ -3,17 +3,20 @@ package com.example.pmapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.R.layout;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,10 +30,16 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.nio.channels.UnsupportedAddressTypeException;
+import java.sql.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -49,12 +58,18 @@ public class activity_add_task extends AppCompatActivity {
     TextView dateOfPickUp,dateOfPickUp2;
     ProgressBar progressBar;
     String TaskNameS,startTime,finishTime,TaskIDS;
+    Spinner spinerP,spinnerE,spinnerM;
+ArrayList <String> Eq;
     Bundle intent1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
+        Eq=new ArrayList<String>();
+        spinerP=findViewById(R.id.Spinner_p);
+        spinnerE=findViewById(R.id.Spinner_e);
+        spinnerM=findViewById(R.id.Spinner_m);
         TaskName=findViewById(R.id.TaskName);
         TsakID=findViewById(R.id.TaskId);
         addTask = findViewById(R.id.addTask);
@@ -106,6 +121,7 @@ public class activity_add_task extends AppCompatActivity {
                 boolean isValidStartTime=true;
                 boolean isValidFinishTime=true;
                 String currentDate=day+"/"+month+"/"+year;
+
 
                 if(TextUtils.isEmpty(TaskIDS)){
                     TsakID.setError("Please Enter Task ID, It Is Required");
@@ -194,7 +210,7 @@ public class activity_add_task extends AppCompatActivity {
     }
 
 
-    public void backToViewResource(View view) {
+    public void backTaskList(View view) {
         intent1 = getIntent().getExtras();
         if (intent1 != null) {
             final String ProjectID = (String) intent1.getString("ProjectID");
