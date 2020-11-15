@@ -67,81 +67,82 @@ public class activity_add_task extends AppCompatActivity {
     Bundle intent1;
     LinearLayout checkBoxs,Materials,Equipment;
     Resource resource;
-    ArrayList<Resource> resources,resources2,resources3;
+    ArrayList<Resource> resources,resources2,resources3,selected;
     ArrayList<String> selectedresource;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
-        Eq=new ArrayList<String>();
+        Eq = new ArrayList<String>();
 //        spinerP=findViewById(R.id.Spinner_p);
 //        spinnerE=findViewById(R.id.Spinner_e);
 //        spinnerM=findViewById(R.id.Spinner_m);
-        TaskName=findViewById(R.id.TaskName);
-        TsakID=findViewById(R.id.TaskId);
+        TaskName = findViewById(R.id.TaskName);
+        TsakID = findViewById(R.id.TaskId);
         addTask = findViewById(R.id.addTask);
-        progressBar=findViewById(R.id.progressBar);
+        progressBar = findViewById(R.id.progressBar);
         dateOfPickUp = findViewById(R.id.startDateT);
         dateOfPickUp2 = findViewById(R.id.endDateT);
-        errorStartDate=findViewById(R.id.errorStartDate);
-        errorEndtDate=findViewById(R.id.errorEndDate);
+        errorStartDate = findViewById(R.id.errorStartDate);
+        errorEndtDate = findViewById(R.id.errorEndDate);
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH) + 1;
         day = calendar.get(Calendar.DAY_OF_MONTH);
         intent1 = getIntent().getExtras();
-        checkBoxs=findViewById(R.id.checkbox);
-        Materials=findViewById(R.id.Materials);
-        Equipment=findViewById(R.id.Equipment);
+        checkBoxs = findViewById(R.id.checkbox);
+        Materials = findViewById(R.id.Materials);
+        Equipment = findViewById(R.id.Equipment);
         db = FirebaseFirestore.getInstance();
-        resources=new ArrayList<Resource>();
-        resources2=new ArrayList<Resource>();
-        resources3=new ArrayList<Resource>();
-        selectedresource=new ArrayList<String>();
-        db.collection("Resources")
-                .whereEqualTo("ResourceType", "People")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@androidx.annotation.Nullable QuerySnapshot snapshots,
-                                        @Nullable FirebaseFirestoreException e) {
-                        if (e != null) {
-                            Log.w("", "listen:error", e);
-                            return;
-                        }
-                        for (QueryDocumentSnapshot document : snapshots) {
-                            String Cost = document.getString("Cost");
-                            String projectID= document.getString("ProjectID");
-                            String ResourceName = document.getString("ResourceName");
-                            String ResourceType=document.getString("ResourceType");
-                            String TimePerDay=document.getString("TimePerDay");
-                            resource = new Resource(document.getId(),Cost, projectID, ResourceName, ResourceType,TimePerDay);
-                            resources.add(resource);
-                        }
+        resources = new ArrayList<Resource>();
+        resources2 = new ArrayList<Resource>();
+        resources3 = new ArrayList<Resource>();
+        selected = new ArrayList<Resource>();
+        selectedresource = new ArrayList<String>();
+        if (intent1 != null) {
+            final String ProjectID = (String) intent1.getString("ProjectID");
+            db.collection("Resources")
+                    .whereEqualTo("ResourceType", "People").whereEqualTo("ProjectID", ProjectID)
+                    .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                        @Override
+                        public void onEvent(@androidx.annotation.Nullable QuerySnapshot snapshots,
+                                            @Nullable FirebaseFirestoreException e) {
+                            if (e != null) {
+                                Log.w("", "listen:error", e);
+                                return;
+                            }
+                            for (QueryDocumentSnapshot document : snapshots) {
+                                String Cost = document.getString("Cost");
+                                String projectID = document.getString("ProjectID");
+                                String ResourceName = document.getString("ResourceName");
+                                String ResourceType = document.getString("ResourceType");
+                                String TimePerDay = document.getString("TimePerDay");
+                                resource = new Resource(document.getId(), Cost, projectID, ResourceName, ResourceType, TimePerDay);
+                                resources.add(resource);
+                            }
 
-                        for(int i=0;i<resources.size();i++){
-                            CheckBox ch=new CheckBox(getApplicationContext());
-                            ch.setTextColor(Color.BLACK);
-                            ch.setText(resources.get(i).ResourceName);
-                            checkBoxs.addView(ch);
+                            for (int i = 0; i < resources.size(); i++) {
+                                CheckBox ch = new CheckBox(getApplicationContext());
+                                ch.setTextColor(Color.BLACK);
+                                ch.setText(resources.get(i).ResourceName);
+                                checkBoxs.addView(ch);
 
-                            ch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                                @Override
-                                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                    if(isChecked){
-                                        selectedresource.add(buttonView.getText().toString());
-                                    }else {
-                                        selectedresource.remove(buttonView.getText().toString());
+                                ch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                                    @Override
+                                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                        if (isChecked) {
+                                            selectedresource.add(buttonView.getText().toString());
+                                        } else {
+                                            selectedresource.remove(buttonView.getText().toString());
+                                        }
                                     }
-                                }
-                            });
-                        }
+                                });
+                            }
 
-                    }// end if null
-                });
-
+                        }// end if null
+                    });
         db.collection("Resources")
-                .whereEqualTo("ResourceType", "Materials")
+                .whereEqualTo("ResourceType", "Materials").whereEqualTo("ProjectID", ProjectID)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@androidx.annotation.Nullable QuerySnapshot snapshots,
@@ -152,16 +153,16 @@ public class activity_add_task extends AppCompatActivity {
                         }
                         for (QueryDocumentSnapshot document : snapshots) {
                             String Cost = document.getString("Cost");
-                            String projectID= document.getString("ProjectID");
+                            String projectID = document.getString("ProjectID");
                             String ResourceName = document.getString("ResourceName");
-                            String ResourceType=document.getString("ResourceType");
-                            String TimePerDay=document.getString("TimePerDay");
-                            resource = new Resource(document.getId(),Cost, projectID, ResourceName, ResourceType,TimePerDay);
+                            String ResourceType = document.getString("ResourceType");
+                            String TimePerDay = document.getString("TimePerDay");
+                            resource = new Resource(document.getId(), Cost, projectID, ResourceName, ResourceType, TimePerDay);
                             resources2.add(resource);
                         }
 
-                        for(int i=0;i<resources2.size();i++){
-                            CheckBox ch=new CheckBox(getApplicationContext());
+                        for (int i = 0; i < resources2.size(); i++) {
+                            CheckBox ch = new CheckBox(getApplicationContext());
                             ch.setTextColor(Color.BLACK);
                             ch.setText(resources2.get(i).ResourceName);
                             Materials.addView(ch);
@@ -169,9 +170,9 @@ public class activity_add_task extends AppCompatActivity {
                             ch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                 @Override
                                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                    if(isChecked){
+                                    if (isChecked) {
                                         selectedresource.add(buttonView.getText().toString());
-                                    }else {
+                                    } else {
                                         selectedresource.remove(buttonView.getText().toString());
                                     }
                                 }
@@ -182,7 +183,7 @@ public class activity_add_task extends AppCompatActivity {
                 });
 
         db.collection("Resources")
-                .whereEqualTo("ResourceType", "Equipment")
+                .whereEqualTo("ResourceType", "Equipment").whereEqualTo("ProjectID", ProjectID)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@androidx.annotation.Nullable QuerySnapshot snapshots,
@@ -193,16 +194,16 @@ public class activity_add_task extends AppCompatActivity {
                         }
                         for (QueryDocumentSnapshot document : snapshots) {
                             String Cost = document.getString("Cost");
-                            String projectID= document.getString("ProjectID");
+                            String projectID = document.getString("ProjectID");
                             String ResourceName = document.getString("ResourceName");
-                            String ResourceType=document.getString("ResourceType");
-                            String TimePerDay=document.getString("TimePerDay");
-                            resource = new Resource(document.getId(),Cost, projectID, ResourceName, ResourceType,TimePerDay);
+                            String ResourceType = document.getString("ResourceType");
+                            String TimePerDay = document.getString("TimePerDay");
+                            resource = new Resource(document.getId(), Cost, projectID, ResourceName, ResourceType, TimePerDay);
                             resources3.add(resource);
                         }
-
-                        for(int i=0;i<resources3.size();i++){
-                            CheckBox ch=new CheckBox(getApplicationContext());
+                        int j = 0;
+                        for (int i = 0; i < resources3.size(); i++) {
+                            CheckBox ch = new CheckBox(getApplicationContext());
                             ch.setTextColor(Color.BLACK);
                             ch.setText(resources3.get(i).ResourceName);
                             Equipment.addView(ch);
@@ -210,18 +211,20 @@ public class activity_add_task extends AppCompatActivity {
                             ch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                 @Override
                                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                    if(isChecked){
+                                    if (isChecked) {
                                         selectedresource.add(buttonView.getText().toString());
-                                    }else {
+                                    } else {
                                         selectedresource.remove(buttonView.getText().toString());
 
                                     }
                                 }
                             });
+                            j++;
                         }
 
                     }// end if null
                 });
+    }
         dateOfPickUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
