@@ -255,99 +255,162 @@ public class activity_add_task extends AppCompatActivity {
         addTask.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-//                TaskNameS = TaskName.getText().toString().trim();
-//                TaskIDS= TsakID.getText().toString().trim();
-//                startTime=dateOfPickUp.getText().toString();
-//                finishTime=dateOfPickUp2.getText().toString();
-//                boolean isValidStartTime=true;
-//                boolean isValidFinishTime=true;
-//                String currentDate=day+"/"+month+"/"+year;
-//
-//
-//                if(TextUtils.isEmpty(TaskIDS)){
-//                    TsakID.setError("Please Enter Task ID, It Is Required");
-//                    return;
-//                }
-//                else if(TextUtils.isEmpty(TaskNameS)){
-//                    TaskName.setError("Please Enter Task Name, It Is Required");
-//                    return;
-//                } else if (TextUtils.isEmpty(startTime)){
-//                    errorStartDate.setError("Please Enter Start Date, It Is Required");
-//                    return;
-//                } else if (TextUtils.isEmpty(finishTime)){
-//                    errorEndtDate.setError("Please Enter Finish Date, It Is Required");
-//                    return;
-//                }else
-//                    if(!(TextUtils.isEmpty(TaskNameS) && TextUtils.isEmpty(startTime) && TextUtils.isEmpty(finishTime))){
-//                    try {
-//                        Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(currentDate);
-//                        Date date2=new SimpleDateFormat("dd/MM/yyyy").parse(startTime);
-//                        if(date1.compareTo(date2) > 0) {
-//                            errorStartDate.setError("Please Enter a Valid Date, Not Past");
-//                            isValidStartTime=false;
-//                        }
-//                    } catch (ParseException e) {
-//                        e.printStackTrace();
-//                    }
-//
-//                    try {
-//                        Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(startTime);
-//                        Date date2=new SimpleDateFormat("dd/MM/yyyy").parse(finishTime);
-//                        if(date1.compareTo(date2) > 0 || date1.compareTo(date2) == 0) {
-//                            errorEndtDate.setError("Please Enter a Valid Date, Not Before or Equal Start Date");
-//                            isValidFinishTime=false;
-//                        }
-//                    } catch (ParseException e) {
-//                        e.printStackTrace();
-//                    }
-//
-//          if(isValidStartTime && isValidFinishTime)  {
-//                    if (intent1 != null) {
-//                        final String ProjectID = (String) intent1.getString("ProjectID");
-//                        progressBar.setVisibility(View.VISIBLE);
-//                        addTask.setVisibility(View.GONE);
-//                        mAuth = FirebaseAuth.getInstance();
-//                        db = FirebaseFirestore.getInstance();
-//                        Map<String, Object> Task = new HashMap<>();
-//                        Task.put("TaskName", TaskNameS);
-//                        Task.put("TaskID", TaskIDS);
-//                        Task.put("ProjectID", ProjectID);
-//                        Task.put("StartDate", startTime);
-//                        Task.put("FinishDate", finishTime);
-//                        db.collection("Task").add(Task).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//
-//                            @Override
-//                            public void onSuccess(DocumentReference documentReference) {
-//
-//                                Toast.makeText(activity_add_task.this, "Task Added Successfully", Toast.LENGTH_SHORT).show();
-//                                intent1 = getIntent().getExtras();
-//                                if (intent1 != null) {
-//                                    final String ProjectID = (String) intent1.getString("ProjectID");
-//                                    Intent intent = new Intent(activity_add_task.this, task_list.class);
-//                                    Bundle b = new Bundle();
-//                                    b.putString("ProjectID", ProjectID);
-//                                    intent.putExtras(b);
-//                                    startActivity(intent);
-//                                }
-////                                                        startActivity(new Intent(AddResource.this, ViewResources.class));
-//                            }
-//
-//
-//                        }).addOnFailureListener(new OnFailureListener() {
-//                            @Override
-//                            public void onFailure(@NonNull Exception e) {
-//                                Toast.makeText(activity_add_task.this, "Something Went Wrong,Try Again ! ", Toast.LENGTH_SHORT).show();
-//                                progressBar.setVisibility(View.GONE);
-//                                addTask.setVisibility(View.VISIBLE);
-//                            }
-//                        });
-//                    }
-//                    }
-//                        return;
-//
-//                }
-                for (int i=0;i<selectedresource.size();i++){
-                    Toast.makeText(activity_add_task.this, selectedresource.get(i), Toast.LENGTH_SHORT).show();
+                double cost=0;
+                TaskNameS = TaskName.getText().toString().trim();
+                TaskIDS= TsakID.getText().toString().trim();
+                startTime=dateOfPickUp.getText().toString();
+                finishTime=dateOfPickUp2.getText().toString();
+                boolean isValidStartTime=true;
+                boolean isValidFinishTime=true;
+                String currentDate=day+"/"+month+"/"+year;
+
+
+                if(TextUtils.isEmpty(TaskIDS)){
+                    TsakID.setError("Please Enter Task ID, It Is Required");
+                    return;
+                }
+                else if(TextUtils.isEmpty(TaskNameS)){
+                    TaskName.setError("Please Enter Task Name, It Is Required");
+                    return;
+                } else if (TextUtils.isEmpty(startTime)){
+                    errorStartDate.setError("Please Enter Start Date, It Is Required");
+                    return;
+                } else if (TextUtils.isEmpty(finishTime)){
+                    errorEndtDate.setError("Please Enter Finish Date, It Is Required");
+                    return;
+                }else
+                    if(!(TextUtils.isEmpty(TaskNameS) && TextUtils.isEmpty(startTime) && TextUtils.isEmpty(finishTime))){
+                    try {
+                        Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(currentDate);
+                        Date date2=new SimpleDateFormat("dd/MM/yyyy").parse(startTime);
+                        if(date1.compareTo(date2) > 0) {
+                            errorStartDate.setError("Please Enter a Valid Date, Not Past");
+                            isValidStartTime=false;
+                        }
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+                        Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(startTime);
+                        Date date2=new SimpleDateFormat("dd/MM/yyyy").parse(finishTime);
+                        if(date1.compareTo(date2) > 0 || date1.compareTo(date2) == 0) {
+                            errorEndtDate.setError("Please Enter a Valid Date, Not Before or Equal Start Date");
+                            isValidFinishTime=false;
+                        }
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                        for (int i=0;i<resources.size();i++){
+                            for(int j=0;j<selectedresource.size();j++){
+                                if(resources.get(i).ResourceName==selectedresource.get(j)){
+                                    selected.add(resources.get(i));
+                                }
+                            }
+                        }
+
+                        for (int i=0;i<resources2.size();i++){
+                            for(int j=0;j<selectedresource.size();j++){
+                                if(resources2.get(i).ResourceName==selectedresource.get(j)){
+                                    selected.add(resources2.get(i));
+                                }
+                            }
+                        }
+
+                        for (int i=0;i<resources3.size();i++){
+                            for(int j=0;j<selectedresource.size();j++){
+                                if(resources3.get(i).ResourceName==selectedresource.get(j)){
+                                    selected.add(resources3.get(i));
+                                }
+                            }
+                        }
+
+                        for (int i=0;i<selected.size();i++){
+                            cost=cost+Double.parseDouble(selected.get(i).Cost);
+                        }
+
+
+          if(isValidStartTime && isValidFinishTime)  {
+                    if (intent1 != null) {
+                        final String ProjectID = (String) intent1.getString("ProjectID");
+                        progressBar.setVisibility(View.VISIBLE);
+                        addTask.setVisibility(View.GONE);
+                        mAuth = FirebaseAuth.getInstance();
+                        db = FirebaseFirestore.getInstance();
+                        Map<String, Object> Task = new HashMap<>();
+                        Task.put("TaskName", TaskNameS);
+                        Task.put("TaskID", TaskIDS);
+                        Task.put("ProjectID", ProjectID);
+                        Task.put("StartDate", startTime);
+                        Task.put("FinishDate", finishTime);
+                        Task.put("TaskCost", cost);
+                        db.collection("Task").add(Task).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+
+                                Toast.makeText(activity_add_task.this, "Task Added Successfully", Toast.LENGTH_SHORT).show();
+                                intent1 = getIntent().getExtras();
+                                if (intent1 != null) {
+                                    for (int i=0;i<selected.size();i++){
+                                        String resourceName=selected.get(i).ResourceName;
+                                        String timePerDay=selected.get(i).TimePerDay;
+                                        String C=selected.get(i).Cost;
+                                        String ProjectID=selected.get(i).ProjectID;
+                                        String type=selected.get(i).ResourceType;
+                                        Map<String, Object> Resource = new HashMap<>();
+                                        Resource.put("ResourceName", resourceName);
+                                        Resource.put("TimePerDay", timePerDay);
+                                        Resource.put("Cost", C);
+                                        Resource.put("ProjectID", ProjectID);
+                                        Resource.put("ResourceType", type);
+                                        db.collection("Task").document(documentReference.getId()).collection("Resources").add(Resource).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+
+                                            @Override
+                                            public void onSuccess(DocumentReference documentReference) {
+                                                DocumentReference docRef = db.collection("Task").document(ProjectID);
+                                                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                        if (task.isSuccessful()) {
+
+                                                        } else {
+
+                                                        }
+                                                    }
+                                                });
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Toast.makeText(activity_add_task.this, "Something Went Wrong,Try Again ! ", Toast.LENGTH_SHORT).show();
+
+                                            }
+                                        });
+                                    }
+                                    final String ProjectID = (String) intent1.getString("ProjectID");
+                                    Intent intent = new Intent(activity_add_task.this, task_list.class);
+                                    Bundle b = new Bundle();
+                                    b.putString("ProjectID", ProjectID);
+                                    intent.putExtras(b);
+                                    startActivity(intent);
+                                }
+//                                                        startActivity(new Intent(AddResource.this, ViewResources.class));
+                            }
+
+
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(activity_add_task.this, "Something Went Wrong,Try Again ! ", Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.GONE);
+                                addTask.setVisibility(View.VISIBLE);
+                            }
+                        });
+                    }
+                    }
+                        return;
+
                 }
             }
         });
