@@ -1,19 +1,25 @@
 package com.example.pmapplication;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.R.layout;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -45,8 +51,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Nullable;
-
 public class activity_add_task extends AppCompatActivity {
     Button addTask;
     FirebaseAuth mAuth;
@@ -59,17 +63,19 @@ public class activity_add_task extends AppCompatActivity {
     ProgressBar progressBar;
     String TaskNameS,startTime,finishTime,TaskIDS;
     Spinner spinerP,spinnerE,spinnerM;
-ArrayList <String> Eq;
+    ArrayList <String> Eq;
     Bundle intent1;
-
+    LinearLayout checkBoxs,Materials,Equipment;
+    Resource resource;
+    ArrayList<Resource> resources,resources2,resources3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
         Eq=new ArrayList<String>();
-        spinerP=findViewById(R.id.Spinner_p);
-        spinnerE=findViewById(R.id.Spinner_e);
-        spinnerM=findViewById(R.id.Spinner_m);
+//        spinerP=findViewById(R.id.Spinner_p);
+//        spinnerE=findViewById(R.id.Spinner_e);
+//        spinnerM=findViewById(R.id.Spinner_m);
         TaskName=findViewById(R.id.TaskName);
         TsakID=findViewById(R.id.TaskId);
         addTask = findViewById(R.id.addTask);
@@ -83,7 +89,135 @@ ArrayList <String> Eq;
         month = calendar.get(Calendar.MONTH) + 1;
         day = calendar.get(Calendar.DAY_OF_MONTH);
         intent1 = getIntent().getExtras();
+        checkBoxs=findViewById(R.id.checkbox);
+        Materials=findViewById(R.id.Materials);
+        Equipment=findViewById(R.id.Equipment);
+        db = FirebaseFirestore.getInstance();
+        resources=new ArrayList<Resource>();
+        resources2=new ArrayList<Resource>();
+        resources3=new ArrayList<Resource>();
+        db.collection("Resources")
+                .whereEqualTo("ResourceType", "People")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@androidx.annotation.Nullable QuerySnapshot snapshots,
+                                        @Nullable FirebaseFirestoreException e) {
+                        if (e != null) {
+                            Log.w("", "listen:error", e);
+                            return;
+                        }
+                        for (QueryDocumentSnapshot document : snapshots) {
+                            String Cost = document.getString("Cost");
+                            String projectID= document.getString("ProjectID");
+                            String ResourceName = document.getString("ResourceName");
+                            String ResourceType=document.getString("ResourceType");
+                            String TimePerDay=document.getString("TimePerDay");
+                            resource = new Resource(document.getId(),Cost, projectID, ResourceName, ResourceType,TimePerDay);
+                            resources.add(resource);
+                        }
 
+                        for(int i=0;i<resources.size();i++){
+                            CheckBox ch=new CheckBox(getApplicationContext());
+                            ch.setTextColor(Color.BLACK);
+                            ch.setText(resources.get(i).ResourceName);
+                            checkBoxs.addView(ch);
+
+                            ch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                                @Override
+                                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                    if(isChecked){
+
+                                    }else {
+
+                                    }
+                                }
+                            });
+                        }
+
+                    }// end if null
+                });
+
+        db.collection("Resources")
+                .whereEqualTo("ResourceType", "Materials")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@androidx.annotation.Nullable QuerySnapshot snapshots,
+                                        @Nullable FirebaseFirestoreException e) {
+                        if (e != null) {
+                            Log.w("", "listen:error", e);
+                            return;
+                        }
+                        for (QueryDocumentSnapshot document : snapshots) {
+                            String Cost = document.getString("Cost");
+                            String projectID= document.getString("ProjectID");
+                            String ResourceName = document.getString("ResourceName");
+                            String ResourceType=document.getString("ResourceType");
+                            String TimePerDay=document.getString("TimePerDay");
+                            resource = new Resource(document.getId(),Cost, projectID, ResourceName, ResourceType,TimePerDay);
+                            resources2.add(resource);
+                        }
+
+                        for(int i=0;i<resources.size();i++){
+                            CheckBox ch=new CheckBox(getApplicationContext());
+                            ch.setTextColor(Color.BLACK);
+                            ch.setText(resources.get(i).ResourceName);
+                            Materials.addView(ch);
+
+                            ch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                                @Override
+                                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                    if(isChecked){
+
+                                    }else {
+
+                                    }
+                                }
+                            });
+                        }
+
+                    }// end if null
+                });
+
+        db.collection("Resources")
+                .whereEqualTo("ResourceType", "Equipment")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@androidx.annotation.Nullable QuerySnapshot snapshots,
+                                        @Nullable FirebaseFirestoreException e) {
+                        if (e != null) {
+                            Log.w("", "listen:error", e);
+                            return;
+                        }
+                        for (QueryDocumentSnapshot document : snapshots) {
+                            String Cost = document.getString("Cost");
+                            String projectID= document.getString("ProjectID");
+                            String ResourceName = document.getString("ResourceName");
+                            String ResourceType=document.getString("ResourceType");
+                            String TimePerDay=document.getString("TimePerDay");
+                            resource = new Resource(document.getId(),Cost, projectID, ResourceName, ResourceType,TimePerDay);
+                            resources3.add(resource);
+                        }
+
+                        for(int i=0;i<resources.size();i++){
+                            CheckBox ch=new CheckBox(getApplicationContext());
+                            ch.setTextColor(Color.BLACK);
+                            ch.setText(resources.get(i).ResourceName);
+                            Equipment.addView(ch);
+
+                            ch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                                @Override
+                                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                    if(isChecked){
+
+                                    }else {
+
+                                    }
+                                }
+                            });
+                        }
+
+                    }// end if null
+                });
         dateOfPickUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

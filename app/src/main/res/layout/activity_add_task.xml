@@ -33,230 +33,284 @@
             android:textColor="#FAFAFA" />
     </Toolbar>
 
-    <LinearLayout
-        android:layout_width="330dp"
-        android:layout_height="555dp"
-        android:background="@drawable/singleproject"
-        android:orientation="vertical"
-        android:padding="5dp"
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.12">
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="360dp"
             android:layout_height="wrap_content"
-            android:padding="2dp"
-            android:text="Task ID:"
-            android:textSize="18dp"
-            android:layout_marginBottom="-8dp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/TaskId"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            android:hint="Enter Task ID"
-            android:inputType="text"
-            android:padding="3dp"
-
-            android:background="@drawable/edit_text_border"/>
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="2dp"
-            android:text="Task Name:"
-            android:textSize="18dp"
-            android:layout_marginTop="-6dp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/TaskName"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            android:hint="Enter Task Name"
-            android:inputType="text"
+            android:background="@drawable/singleproject"
+            android:orientation="vertical"
             android:padding="5dp"
-            android:background="@drawable/edit_text_border"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintVertical_bias="0.12">
 
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="2dp"
-            android:text="Start Date:"
-            android:textSize="18dp"
-            android:layout_marginTop="-6dp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
 
             <TextView
-                android:id="@+id/startDateT"
-                android:layout_width="334dp"
-                android:layout_height="50dp"
-                android:background="@drawable/edit_text_border"
-                android:hint="Enter Start Date"
-                android:textColorHint="#9E9E9E"
-                android:textColor="#212121"
-                android:textSize="19dp" />
-
-            <EditText
-                android:id="@+id/errorStartDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/edit_text_border"
-                android:layout_marginTop="5dp"/>
-        </LinearLayout>
+                android:layout_marginBottom="-8dp"
+                android:padding="2dp"
+                android:text="Task ID:"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="2dp"
-            android:text="Finish Date:"
-            android:textSize="18dp"
-            android:layout_marginTop="-6dp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
-
-            <TextView
-                android:id="@+id/endDateT"
-                android:layout_width="334dp"
-                android:layout_height="50dp"
-                android:background="@drawable/edit_text_border"
-                android:hint="Enter Start Date"
-                android:textColorHint="#9E9E9E"
-                android:textColor="#212121"
-                android:textSize="19dp"/>
 
             <EditText
-                android:id="@+id/errorEndDate"
+                android:id="@+id/TaskId"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/edit_text_border"
+                android:hint="Enter Task ID"
+                android:inputType="text"
+
+                android:padding="3dp" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="-6dp"
+                android:padding="2dp"
+                android:text="Task Name:"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/TaskName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
                 android:background="@drawable/edit_text_border"
-                android:layout_marginTop="5dp"/>
+                android:hint="Enter Task Name"
+                android:inputType="text"
+                android:padding="5dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-6dp"
+                android:padding="2dp"
+                android:text="Start Date:"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/startDateT"
+                    android:layout_width="334dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edit_text_border"
+                    android:hint="Enter Start Date"
+                    android:textColor="#212121"
+                    android:textColorHint="#9E9E9E"
+                    android:textSize="19dp" />
+
+                <EditText
+                    android:id="@+id/errorStartDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/edit_text_border" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-6dp"
+                android:padding="2dp"
+                android:text="Finish Date:"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/endDateT"
+                    android:layout_width="334dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edit_text_border"
+                    android:hint="Enter Start Date"
+                    android:textColor="#212121"
+                    android:textColorHint="#9E9E9E"
+                    android:textSize="19dp" />
+
+                <EditText
+                    android:id="@+id/errorEndDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/edit_text_border" />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-6dp"
+                android:padding="2dp"
+                android:text="Add a Resource For This Task:"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_gravity="center"-->
+            <!--                android:orientation="horizontal">-->
+
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="match_parent"-->
+            <!--                    android:layout_marginLeft="35dp"-->
+            <!--                    android:text="People"-->
+            <!--                    android:textColor="#212121"-->
+            <!--                    android:textColorHint="#9E9E9E"-->
+            <!--                    android:textSize="14dp" />-->
+
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="match_parent"-->
+            <!--                    android:layout_marginLeft="35dp"-->
+            <!--                    android:text="Materials"-->
+            <!--                    android:textColor="#212121"-->
+            <!--                    android:textColorHint="#9E9E9E"-->
+            <!--                    android:textSize="14dp" />-->
+
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="match_parent"-->
+            <!--                    android:layout_marginLeft="35dp"-->
+            <!--                    android:text="Equipment"-->
+            <!--                    android:textColor="#212121"-->
+            <!--                    android:textColorHint="#9E9E9E"-->
+            <!--                    android:textSize="14dp" />-->
+
+            <!--            </LinearLayout>-->
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_gravity="center"-->
+            <!--                android:orientation="horizontal">-->
+
+            <!--                <Spinner-->
+            <!--                    android:id="@+id/Spinner_p"-->
+            <!--                    android:layout_width="55dp"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginLeft="32dp"-->
+            <!--                    android:contextClickable="true"-->
+            <!--                    android:drawSelectorOnTop="true"-->
+            <!--                    android:spinnerMode="dropdown" />-->
+
+            <!--                <Spinner-->
+            <!--                    android:id="@+id/Spinner_m"-->
+            <!--                    android:layout_width="55dp"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginLeft="30dp"-->
+            <!--                    android:contextClickable="true"-->
+            <!--                    android:drawSelectorOnTop="true"-->
+            <!--                    android:spinnerMode="dropdown" />-->
+
+            <!--                <Spinner-->
+            <!--                    android:id="@+id/Spinner_e"-->
+            <!--                    android:layout_width="55dp"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginLeft="32dp"-->
+            <!--                    android:contextClickable="true"-->
+            <!--                    android:drawSelectorOnTop="true"-->
+            <!--                    android:spinnerMode="dropdown" />-->
+
+
+            <!--            </LinearLayout>-->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-6dp"
+                android:padding="2dp"
+                android:text="People:"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:textColor="#212121"></LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-6dp"
+                android:padding="2dp"
+                android:text="Materials:"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/Materials"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:textColor="#212121"></LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-6dp"
+                android:padding="2dp"
+                android:text="Equipment:"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/Equipment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:textColor="#212121"></LinearLayout>
+
+
+            <Button
+                android:id="@+id/addTask"
+                android:layout_width="130dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="#009688"
+                android:enabled="true"
+                android:text="Add Task"
+                android:textSize="16sp"
+                android:visibility="visible"
+                app:backgroundTint="#107C61" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
         </LinearLayout>
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="2dp"
-            android:text="Add a Resource For This Task:"
-            android:textSize="16dp"
-            android:layout_marginTop="-6dp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="People"
-                android:layout_marginLeft="35dp"
-                android:textColorHint="#9E9E9E"
-                android:textColor="#212121"
-                android:textSize="14dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Materials"
-                android:layout_marginLeft="35dp"
-                android:textColorHint="#9E9E9E"
-                android:textColor="#212121"
-                android:textSize="14dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Equipment"
-                android:layout_marginLeft="35dp"
-                android:textColorHint="#9E9E9E"
-                android:textColor="#212121"
-                android:textSize="14dp"/>
-
-        </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
-        <Spinner
-            android:layout_width="55dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/Spinner_p"
-            android:contextClickable="true"
-            android:drawSelectorOnTop="true"
-            android:spinnerMode="dropdown"
-            android:layout_marginLeft="32dp"
-            />
-
-        <Spinner
-            android:layout_width="55dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/Spinner_m"
-            android:contextClickable="true"
-            android:drawSelectorOnTop="true"
-            android:spinnerMode="dropdown"
-            android:layout_marginLeft="30dp"
-            />
-        <Spinner
-            android:layout_width="55dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/Spinner_e"
-            android:contextClickable="true"
-            android:drawSelectorOnTop="true"
-            android:spinnerMode="dropdown"
-            android:layout_marginLeft="32dp"
-            />
-
-
-    </LinearLayout>
-
-
-
-        <Button
-            android:id="@+id/addTask"
-            android:layout_width="130dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:background="#009688"
-            android:enabled="true"
-            android:text="Add Task"
-            android:textSize="16sp"
-            app:backgroundTint="#107C61"
-            android:visibility="visible"
-            />
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"/>
-
-
-
-    </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
