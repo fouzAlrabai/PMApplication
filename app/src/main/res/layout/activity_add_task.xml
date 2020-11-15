@@ -46,10 +46,11 @@
         tools:ignore="MissingConstraints">
 
         <LinearLayout
-            android:layout_width="360dp"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:background="@drawable/singleproject"
             android:orientation="vertical"
+            android:layout_marginTop="34dp"
             android:padding="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -167,7 +168,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-6dp"
                 android:padding="2dp"
-                android:text="Add a Resource For This Task:"
+                android:text="Add a Resource To This Task:"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
@@ -241,22 +242,26 @@
 
 
             <!--            </LinearLayout>-->
+<LinearLayout
+    android:layout_width="330dp"
+    android:layout_height="150dp"
+    android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-6dp"
-                android:padding="2dp"
-                android:text="People:"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-6dp"
+        android:padding="2dp"
+        android:text="People:"
+        android:textSize="14dp"
+        android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:textColor="#212121"></LinearLayout>
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:textColor="#212121"
+                android:orientation="horizontal"></LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -264,13 +269,13 @@
                 android:layout_marginTop="-6dp"
                 android:padding="2dp"
                 android:text="Materials:"
-                android:textSize="18dp"
+                android:textSize="14dp"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/Materials"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:orientation="horizontal"
                 android:textColor="#212121"></LinearLayout>
 
@@ -280,26 +285,27 @@
                 android:layout_marginTop="-6dp"
                 android:padding="2dp"
                 android:text="Equipment:"
-                android:textSize="18dp"
+                android:textSize="14dp"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/Equipment"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:orientation="horizontal"
                 android:textColor="#212121"></LinearLayout>
-
+</LinearLayout>
 
             <Button
                 android:id="@+id/addTask"
-                android:layout_width="130dp"
+                android:layout_width="80dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="#009688"
                 android:enabled="true"
-                android:text="Add Task"
+                android:text="Add"
                 android:textSize="16sp"
                 android:visibility="visible"
                 app:backgroundTint="#107C61" />
