@@ -8,6 +8,7 @@ import android.R.layout;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -55,14 +56,13 @@ public class activity_add_task extends AppCompatActivity {
     Button addTask;
     FirebaseAuth mAuth;
     FirebaseFirestore db;
-    EditText TaskName,errorStartDate,errorEndtDate,TsakID;
+    EditText TaskName,errorStartDate,errorEndtDate,TsakID,ResourceError;
     DatePickerDialog datepicker;
     Calendar calendar;
     int day,month,year;
     TextView dateOfPickUp,dateOfPickUp2;
     ProgressBar progressBar;
     String TaskNameS,startTime,finishTime,TaskIDS;
-    Spinner spinerP,spinnerE,spinnerM;
     ArrayList <String> Eq;
     Bundle intent1;
     LinearLayout checkBoxs,Materials,Equipment;
@@ -74,9 +74,6 @@ public class activity_add_task extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
         Eq = new ArrayList<String>();
-//        spinerP=findViewById(R.id.Spinner_p);
-//        spinnerE=findViewById(R.id.Spinner_e);
-//        spinnerM=findViewById(R.id.Spinner_m);
         TaskName = findViewById(R.id.TaskName);
         TsakID = findViewById(R.id.TaskId);
         addTask = findViewById(R.id.addTask);
@@ -98,6 +95,7 @@ public class activity_add_task extends AppCompatActivity {
         resources2 = new ArrayList<Resource>();
         resources3 = new ArrayList<Resource>();
         selected = new ArrayList<Resource>();
+        ResourceError=findViewById(R.id.ResourceError);
         selectedresource = new ArrayList<String>();
         if (intent1 != null) {
             final String ProjectID = (String) intent1.getString("ProjectID");
@@ -123,7 +121,9 @@ public class activity_add_task extends AppCompatActivity {
 
                             for (int i = 0; i < resources.size(); i++) {
                                 CheckBox ch = new CheckBox(getApplicationContext());
-                                ch.setTextColor(Color.BLACK);
+                                ch.setTextColor(Color.parseColor("#616161"));
+                                ch.setTypeface(null, Typeface.ITALIC);
+                                ch.setTextSize(15);
                                 ch.setText(resources.get(i).ResourceName);
                                 checkBoxs.addView(ch);
 
@@ -163,7 +163,9 @@ public class activity_add_task extends AppCompatActivity {
 
                         for (int i = 0; i < resources2.size(); i++) {
                             CheckBox ch = new CheckBox(getApplicationContext());
-                            ch.setTextColor(Color.BLACK);
+                            ch.setTextColor(Color.parseColor("#616161"));
+                            ch.setTypeface(null, Typeface.ITALIC);
+                            ch.setTextSize(15);
                             ch.setText(resources2.get(i).ResourceName);
                             Materials.addView(ch);
 
@@ -204,7 +206,9 @@ public class activity_add_task extends AppCompatActivity {
                         int j = 0;
                         for (int i = 0; i < resources3.size(); i++) {
                             CheckBox ch = new CheckBox(getApplicationContext());
-                            ch.setTextColor(Color.BLACK);
+                            ch.setTextColor(Color.parseColor("#616161"));
+                            ch.setTypeface(null, Typeface.ITALIC);
+                            ch.setTextSize(15);
                             ch.setText(resources3.get(i).ResourceName);
                             Equipment.addView(ch);
 
@@ -264,7 +268,53 @@ public class activity_add_task extends AppCompatActivity {
                 boolean isValidFinishTime=true;
                 String currentDate=day+"/"+month+"/"+year;
 
+//                for (int i=0;i<resources.size();i++){
+//                    for(int j=0;j<selectedresource.size();j++){
+//                        if(resources.get(i).ResourceName==selectedresource.get(j)){
+//                            selected.add(resources.get(i));
+//                        }
+//                    }
+//                }
+//
+//                for (int i=0;i<resources2.size();i++){
+//                    for(int j=0;j<selectedresource.size();j++){
+//                        if(resources2.get(i).ResourceName==selectedresource.get(j)){
+//                            selected.add(resources2.get(i));
+//                        }
+//                    }
+//                }
 
+                for (int i=0;i<selectedresource.size();i++){
+                    for(int j=0;j<resources.size();j++){
+                        if(resources.get(j).ResourceName==selectedresource.get(i)){
+                            selected.add(resources.get(j));
+                        }
+                    }
+
+                    for(int j=0;j<resources2.size();j++){
+                        if(resources2.get(j).ResourceName==selectedresource.get(i)){
+                            selected.add(resources2.get(j));
+                        }
+                    }
+
+                    for(int j=0;j<resources3.size();j++){
+                        if(resources3.get(j).ResourceName==selectedresource.get(i)){
+                            selected.add(resources3.get(j));
+                        }
+                    }
+                }
+
+//                for (int i=0;i<resources3.size();i++){
+//                    for(int j=0;j<selectedresource.size();j++){
+//                        if(resources3.get(i).ResourceName==selectedresource.get(j)){
+//                            selected.add(resources3.get(i));
+//                        }
+//                    }
+//                }
+
+                for (int i=0;i<selected.size();i++){
+                    cost=cost+Double.parseDouble(selected.get(i).Cost);
+                }
                 if(TextUtils.isEmpty(TaskIDS)){
                     TsakID.setError("Please Enter Task ID, It Is Required");
                     return;
@@ -275,8 +325,11 @@ public class activity_add_task extends AppCompatActivity {
                 } else if (TextUtils.isEmpty(startTime)){
                     errorStartDate.setError("Please Enter Start Date, It Is Required");
                     return;
-                } else if (TextUtils.isEmpty(finishTime)){
+                } else if (TextUtils.isEmpty(finishTime)) {
                     errorEndtDate.setError("Please Enter Finish Date, It Is Required");
+                    return;
+                }else if(selected.isEmpty()){
+                    ResourceError.setError("Please Select a Resource, It Is Required");
                     return;
                 }else
                     if(!(TextUtils.isEmpty(TaskNameS) && TextUtils.isEmpty(startTime) && TextUtils.isEmpty(finishTime))){
@@ -301,34 +354,6 @@ public class activity_add_task extends AppCompatActivity {
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
-                        for (int i=0;i<resources.size();i++){
-                            for(int j=0;j<selectedresource.size();j++){
-                                if(resources.get(i).ResourceName==selectedresource.get(j)){
-                                    selected.add(resources.get(i));
-                                }
-                            }
-                        }
-
-                        for (int i=0;i<resources2.size();i++){
-                            for(int j=0;j<selectedresource.size();j++){
-                                if(resources2.get(i).ResourceName==selectedresource.get(j)){
-                                    selected.add(resources2.get(i));
-                                }
-                            }
-                        }
-
-                        for (int i=0;i<resources3.size();i++){
-                            for(int j=0;j<selectedresource.size();j++){
-                                if(resources3.get(i).ResourceName==selectedresource.get(j)){
-                                    selected.add(resources3.get(i));
-                                }
-                            }
-                        }
-
-                        for (int i=0;i<selected.size();i++){
-                            cost=cost+Double.parseDouble(selected.get(i).Cost);
-                        }
-
 
           if(isValidStartTime && isValidFinishTime)  {
                     if (intent1 != null) {

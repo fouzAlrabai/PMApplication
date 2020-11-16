@@ -46,7 +46,7 @@
         tools:ignore="MissingConstraints">
 
         <LinearLayout
-            android:layout_width="330dp"
+            android:layout_width="360dp"
             android:layout_height="wrap_content"
             android:background="@drawable/singleproject"
             android:orientation="vertical"
@@ -62,8 +62,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="-8dp"
-                android:padding="2dp"
+                android:padding="7dp"
                 android:text="Task ID:"
                 android:textSize="18dp"
                 android:textStyle="bold" />
@@ -73,18 +72,15 @@
                 android:id="@+id/TaskId"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_margin="5dp"
+                android:layout_marginLeft="5dp"
                 android:background="@drawable/edit_text_border"
                 android:hint="Enter Task ID"
-                android:inputType="text"
-
-                android:padding="3dp" />
+                android:inputType="text"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-6dp"
-                android:padding="2dp"
+                android:padding="7dp"
                 android:text="Task Name:"
                 android:textSize="18dp"
                 android:textStyle="bold" />
@@ -93,29 +89,29 @@
                 android:id="@+id/TaskName"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_margin="5dp"
+                android:layout_marginLeft="5dp"
                 android:background="@drawable/edit_text_border"
                 android:hint="Enter Task Name"
                 android:inputType="text"
-                android:padding="5dp" />
+                 />
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-6dp"
-                android:padding="2dp"
+                android:padding="7dp"
                 android:text="Start Date:"
                 android:textSize="18dp"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp">
 
                 <TextView
                     android:id="@+id/startDateT"
-                    android:layout_width="334dp"
+                    android:layout_width="314dp"
                     android:layout_height="50dp"
                     android:background="@drawable/edit_text_border"
                     android:hint="Enter Start Date"
@@ -125,7 +121,7 @@
 
                 <EditText
                     android:id="@+id/errorStartDate"
-                    android:layout_width="wrap_content"
+                    android:layout_width="37dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/edit_text_border" />
@@ -134,19 +130,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-6dp"
-                android:padding="2dp"
+                android:padding="7dp"
                 android:text="Finish Date:"
                 android:textSize="18dp"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp">
 
                 <TextView
                     android:id="@+id/endDateT"
-                    android:layout_width="334dp"
+                    android:layout_width="314dp"
                     android:layout_height="50dp"
                     android:background="@drawable/edit_text_border"
                     android:hint="Enter Start Date"
@@ -156,112 +152,63 @@
 
                 <EditText
                     android:id="@+id/errorEndDate"
-                    android:layout_width="wrap_content"
+                    android:layout_width="37dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/edit_text_border" />
             </LinearLayout>
 
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add a Resource To This Task:"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:background="@drawable/edit_text_border"/>
+
+<!--        <TextView-->
+<!--            android:id="@+id/ResourceError"-->
+<!--            android:layout_width="37dp"-->
+<!--            android:layout_height="37dp"-->
+<!--            android:layout_marginTop="-6dp"-->
+<!--            android:padding="2dp"-->
+<!--            android:textSize="12dp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textColor="@color/purple_500"/>-->
+
+        <EditText
+            android:id="@+id/ResourceError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_border"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-6dp"
                 android:padding="2dp"
-                android:text="Add a Resource To This Task:"
-                android:textSize="16dp"
+                android:text="People:"
+                android:textSize="14dp"
                 android:textStyle="bold" />
-
-            <!--            <LinearLayout-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_gravity="center"-->
-            <!--                android:orientation="horizontal">-->
-
-            <!--                <TextView-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="match_parent"-->
-            <!--                    android:layout_marginLeft="35dp"-->
-            <!--                    android:text="People"-->
-            <!--                    android:textColor="#212121"-->
-            <!--                    android:textColorHint="#9E9E9E"-->
-            <!--                    android:textSize="14dp" />-->
-
-            <!--                <TextView-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="match_parent"-->
-            <!--                    android:layout_marginLeft="35dp"-->
-            <!--                    android:text="Materials"-->
-            <!--                    android:textColor="#212121"-->
-            <!--                    android:textColorHint="#9E9E9E"-->
-            <!--                    android:textSize="14dp" />-->
-
-            <!--                <TextView-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="match_parent"-->
-            <!--                    android:layout_marginLeft="35dp"-->
-            <!--                    android:text="Equipment"-->
-            <!--                    android:textColor="#212121"-->
-            <!--                    android:textColorHint="#9E9E9E"-->
-            <!--                    android:textSize="14dp" />-->
-
-            <!--            </LinearLayout>-->
-
-            <!--            <LinearLayout-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_gravity="center"-->
-            <!--                android:orientation="horizontal">-->
-
-            <!--                <Spinner-->
-            <!--                    android:id="@+id/Spinner_p"-->
-            <!--                    android:layout_width="55dp"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_marginLeft="32dp"-->
-            <!--                    android:contextClickable="true"-->
-            <!--                    android:drawSelectorOnTop="true"-->
-            <!--                    android:spinnerMode="dropdown" />-->
-
-            <!--                <Spinner-->
-            <!--                    android:id="@+id/Spinner_m"-->
-            <!--                    android:layout_width="55dp"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_marginLeft="30dp"-->
-            <!--                    android:contextClickable="true"-->
-            <!--                    android:drawSelectorOnTop="true"-->
-            <!--                    android:spinnerMode="dropdown" />-->
-
-            <!--                <Spinner-->
-            <!--                    android:id="@+id/Spinner_e"-->
-            <!--                    android:layout_width="55dp"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_marginLeft="32dp"-->
-            <!--                    android:contextClickable="true"-->
-            <!--                    android:drawSelectorOnTop="true"-->
-            <!--                    android:spinnerMode="dropdown" />-->
-
-
-            <!--            </LinearLayout>-->
-<LinearLayout
-    android:layout_width="330dp"
-    android:layout_height="150dp"
-    android:orientation="vertical">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-6dp"
-        android:padding="2dp"
-        android:text="People:"
-        android:textSize="14dp"
-        android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/checkbox"
-                android:layout_width="300dp"
-                android:layout_height="30dp"
-                android:textColor="#212121"
-                android:orientation="horizontal"></LinearLayout>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"></LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -272,29 +219,31 @@
                 android:textSize="14dp"
                 android:textStyle="bold" />
 
-            <LinearLayout
-                android:id="@+id/Materials"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:orientation="horizontal"
-                android:textColor="#212121"></LinearLayout>
+                <LinearLayout
+                    android:id="@+id/Materials"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp"
+                    ></LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-6dp"
-                android:padding="2dp"
-                android:text="Equipment:"
-                android:textSize="14dp"
-                android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-6dp"
+                    android:padding="2dp"
+                    android:text="Equipment:"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
 
-            <LinearLayout
-                android:id="@+id/Equipment"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:orientation="horizontal"
-                android:textColor="#212121"></LinearLayout>
-</LinearLayout>
+                <LinearLayout
+                    android:id="@+id/Equipment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp"
+                 ></LinearLayout>
+        </LinearLayout>
 
             <Button
                 android:id="@+id/addTask"
